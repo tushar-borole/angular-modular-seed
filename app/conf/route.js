@@ -12,14 +12,14 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFor
     /*    Full page screen route*/
         .state('app', {
             url: '/app',
-            templateUrl: 'views/fullpage.html',
+            templateUrl: 'common/views/fullpage.html',
             data: {
                 pageTitle: 'Example view'
             }
         })
         .state('app.login', {
             url: '/login',
-            templateUrl: 'views/login.html',
+            templateUrl: 'login/login.html',
             data: {
                 pageTitle: 'Example view'
             },
@@ -29,7 +29,7 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFor
         })
         .state('karmaapp', {
             url: '/karmaapp',
-            templateUrl: 'views/halfpage.html',
+            templateUrl: 'common/views/halfpage.html',
             data: {
                 pageTitle: 'Example view'
             },
@@ -46,7 +46,7 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFor
             controller: 'DashboardCtrl'
         });
     $translateProvider.useStaticFilesLoader({
-        prefix: 'i18/',
+        prefix: 'assets/i18/',
         suffix: '.json'
     });
     //var baseurl = $environment.url;

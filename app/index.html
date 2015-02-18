@@ -26,10 +26,8 @@
     <link href="bower_components/Hover/css/hover-min.css" rel="stylesheet">
     <link href="bower_components/iCheck/skins/square/green.css" rel="stylesheet">
     <link href="bower_components/angular-loading/angular-loading.css" rel="stylesheet">
-    <link href="styles/modal.css" rel="stylesheet">
-    <link href="styles/common.css" rel="stylesheet">
-    <link href="styles/custom.css" rel="stylesheet">
-    <link href="styles/style.css" rel="stylesheet">
+    <link href="assets/css/common.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
     <link href="bower_components/helper.css/dist/helper.min.css" rel="stylesheet">
     <!-- endbuild -->
 
@@ -64,8 +62,6 @@
     <script src="bower_components/select2/select2.min.js"></script>
     <script src="bower_components/iCheck/icheck.min.js"></script>
     <script src="bower_components/spin.js/spin.js"></script>
-    <script src="scripts/inspinia.js"></script>
-    <script src="scripts/common.js"></script>
     <!-- endbuild -->
 
 
@@ -93,9 +89,7 @@
     <script src="bower_components/ng-table-export/ng-table-export.js"></script>
     <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
     <script src="bower_components/angular-truncate/src/truncate.js"></script>
-    <script src="scripts/directive/angular.dcb-img-fallback.js"></script>
     <script src="bower_components/angles/angles.js"></script>
-    <script src="scripts/directive/popover-template.js"></script>
     <script src="bower_components/angular-chosen-localytics/chosen.js"></script>
     <script src="bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.min.js"></script>
     <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
@@ -110,18 +104,18 @@
 
 
     <!-- build:js scripts/scripts.js -->
-     <script src="scripts/angular-conf/app.js"></script>
+    <script src="common/common.js"></script>
+     <script src="conf/app.js"></script>
     <script src="conf/config.js"></script>
-    <script src="scripts/service/service.js"></script>
-    <script src="scripts/angular-conf/route.js"></script>
-    <script src="scripts/angular-conf/interceptor.js"></script>
-    <script src="scripts/angular-conf/constant.js"></script>
-    <script src="scripts/angular-conf/url.js"></script>
-    <script src="scripts/filter/filters.js"></script>
-    <script src="scripts/factory/dataFactory.js"></script>
-    <script src="scripts/directive/custom.js"></script>
-    <script src="scripts/controller/MainCtrl.js"></script>
-    <script src="scripts/controller/LoginCtrl.js"></script>
+    <script src="common/service.js"></script>
+    <script src="conf/route.js"></script>
+    <script src="conf/interceptor.js"></script>
+    <script src="conf/constant.js"></script>
+    <script src="conf/url.js"></script>
+    <script src="common/filter.js"></script>
+    <script src="common/factory.js"></script>
+    <script src="login/login-controller.js"></script>
+    <script src="common/main-controller.js"></script>
     <!-- endbuild -->
 </body>
 
