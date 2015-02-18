@@ -1,0 +1,15 @@
+{
+    "constant": {"pagetitle":"KarmaWorldWide"},
+    "login": {
+        "title": "Start",
+        "error":{
+        "loginerror":"Invalid User Name And Password"
+        }
+    },
+    "dashbooard": {
+        "title": "Start"
+    },
+    "error": {
+        "loginfails": "loggedinfails"
+    }
+}

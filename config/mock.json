@@ -1,0 +1,9 @@
+{ "analyticsAppId" : "UA-XXXXXXXX-1",
+  "facebookAppId" : "12345678901234",
+  "jsonurl" : "",
+  "name" : "mock",
+  "backendurl" : "http://localhost:9000",
+ "urlname":"mock",
+ "viewbasepath":"",
+ "jsonpath":"/json/detailJson/"
+}

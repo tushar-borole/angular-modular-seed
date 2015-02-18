@@ -1,0 +1,28 @@
+[{
+    "name": "Dashboard",
+    "icon": "",
+    "href": "wer",
+    "childrenicon": [{
+        "name": "Dashboard",
+        "icon": "",
+        "href": "wer"
+    }, {
+        "name": "Dashboard",
+        "icon": "",
+        "href": "wer"
+    }]
+},
+{
+    "name": "Manage Mail Format",
+    "icon": "",
+    "href": "inapp.mailformat",
+    "childrenicon": [{
+        "name": "Dashboard",
+        "icon": "",
+        "href": ""
+    }, {
+        "name": "Dashboard",
+        "icon": "",
+        "href": ""
+    }]
+}]

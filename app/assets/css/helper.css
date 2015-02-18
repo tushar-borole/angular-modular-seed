@@ -1,0 +1,80 @@
+/* Alignments */
+
+.l{float: left;}
+.r{float: right;}
+
+/* Block positions */
+
+.pos-rel{position: relative;}
+.pos-abs{position: absolute;}
+.db{display: block;}
+.w100{width: 100%;}
+
+/* Font/Text settings */
+
+.b{font-weight: bold;}
+.i{font-style: italic;}
+.fl{font-weight: lighter;}
+.center{text-align: center;}
+.ti{text-indent: -9999em;}
+
+/* Font sizes */
+
+.f10{font-size: 10px;}
+.f11{font-size: 11px;}
+.f12{font-size: 12px;}
+.f13{font-size: 13px;}
+.f14{font-size: 14px;}
+.f15{font-size: 15px;}
+.f16{font-size: 16px;}
+.f17{font-size: 17px;}
+.f18{font-size: 18px;}
+.f19{font-size: 19px;}
+.f20{font-size: 20px;}
+.f21{font-size: 21px;}
+.f21{font-size: 21px;}
+.f22{font-size: 22px;}
+.f23{font-size: 23px;}
+.f24{font-size: 24px;}
+.f25{font-size: 25px;}
+.f26{font-size: 26px;}
+.f27{font-size: 27px;}
+.f28{font-size: 28px;}
+.f29{font-size: 29px;}
+.f30{font-size: 30px;}
+
+/* Margins */
+
+.mt5{margin-top: 5px;}
+.mb5{margin-bottom: 5px;}
+.ml5{margin-left: 5px;}
+.mr5{margin-right: 5px;}
+
+.mt10{margin-top: 10px;}
+.mb10{margin-bottom: 10px;}
+.ml10{margin-left: 10px;}
+.mr10{margin-right: 10px;}
+
+.mt15{margin-top: 15px;}
+.mb15{margin-bottom: 15px;}
+.ml15{margin-left: 15px;}
+.mr15{margin-right: 15px;}
+
+.mt20{margin-top: 20px;}
+.mb20{margin-bottom: 20px;}
+.ml20{margin-left: 20px;}
+.mr20{margin-right: 20px;}
+
+.mt30{margin-top: 30px;}
+.mb30{margin-bottom: 30px;}
+.ml30{margin-left: 30px;}
+.mr30{margin-right: 30px;}
+
+/* Other stuff */
+
+.hidden{display: none;}
+.css-crop{overflow: hidden;}
+.clear{clear: both;}
+li{list-style: none;} /* Default list style sucks - If you need it, remove this line, or create a specific rule - e.g. #your-div li{} */
+textarea:focus, input:focus{outline: none;} /* It will avoid the annoying default yellow border on Google Chrome in textarea and input */
+

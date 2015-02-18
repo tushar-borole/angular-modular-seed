@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html ng-app="karma">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title set in pageTitle directive -->
+    <title translate="constant.pagetitle"></title>
+
+   <!-- build:css({.tmp,app}) styles/main.css -->
+    <link href="bower_components/ng-tags-input/ng-tags-input.min.css" rel="stylesheet">
+    <link href="bower_components/summernote/dist/summernote-bs3.css" rel="stylesheet">
+    <link href="bower_components/summernote/dist/summernote.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="bower_components/angular-notify/dist/angular-notify.min.css" rel="stylesheet">
+    <link href="bower_components/ng-table/ng-table.min.css" rel="stylesheet">
+    <link href="bower_components/switchery/dist/switchery.min.css" rel="stylesheet">
+    <link href="bower_components/chosen/chosen.css" rel="stylesheet">
+    <link href="bower_components/angular-chosen-localytics/chosen-spinner.css" rel="stylesheet">
+    <link href="bower_components/select2/select2.css" rel="stylesheet">
+    <link href="bower_components/angular-ui-select/dist/select.min.css" rel="stylesheet">
+    <link href="bower_components/Hover/css/hover-min.css" rel="stylesheet">
+    <link href="bower_components/iCheck/skins/square/green.css" rel="stylesheet">
+    <link href="bower_components/angular-loading/angular-loading.css" rel="stylesheet">
+    <link href="styles/modal.css" rel="stylesheet">
+    <link href="styles/common.css" rel="stylesheet">
+    <link href="styles/custom.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="bower_components/helper.css/dist/helper.min.css" rel="stylesheet">
+    <!-- endbuild -->
+
+
+</head>
+
+<!-- ControllerAs syntax -->
+<!-- Main controller with serveral data used in Inspinia theme on diferent view -->
+
+<body ng-controller="MainCtrl as main" ng-class="{'gray-bg':$state.current.isFullpage}">
+
+    <div ui-view></div>
+
+     <!-- build:js scripts/core.js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <!-- endbuild -->
+
+   <!-- build:js scripts/plugins.js -->
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/metisMenu/dist/metisMenu.js"></script>
+    <script src="bower_components/pace/pace.min.js"></script>
+    <script src="bower_components/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/summernote/dist/summernote.js"></script>
+    <script src="bower_components/bootbox/bootbox.js"></script>
+    <script src="bower_components/switchery/dist/switchery.min.js"></script>
+    <script src="bower_components/chosen/chosen.jquery.min.js"></script>
+    <script src="bower_components/Chart.js/Chart.min.js"></script>
+    <script src="bower_components/select2/select2.min.js"></script>
+    <script src="bower_components/iCheck/icheck.min.js"></script>
+    <script src="bower_components/spin.js/spin.js"></script>
+    <script src="scripts/inspinia.js"></script>
+    <script src="scripts/common.js"></script>
+    <!-- endbuild -->
+
+
+
+    <!-- build:js scripts/modules.js -->
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/ng-file-upload/angular-file-upload-all.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/restangular/dist/restangular.min.js"></script>
+    <script src="bower_components/angular-cookie/angular-cookie.min.js"></script>
+    <script src="bower_components/angular-notify/dist/angular-notify.min.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/ng-fab-form/dist/ng-fab-form.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/ng-table/ng-table.min.js"></script>
+    <script src="bower_components/ng-busy/build/angular-busy.min.js"></script>
+    <script src="bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
+    <script src="bower_components/ngBootbox/dist/ngBootbox.min.js"></script>
+    <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
+    <script src="bower_components/ng-switchery/src/ng-switchery.js"></script>
+    <script src="bower_components/ng-table-export/ng-table-export.js"></script>
+    <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+    <script src="bower_components/angular-truncate/src/truncate.js"></script>
+    <script src="scripts/directive/angular.dcb-img-fallback.js"></script>
+    <script src="bower_components/angles/angles.js"></script>
+    <script src="scripts/directive/popover-template.js"></script>
+    <script src="bower_components/angular-chosen-localytics/chosen.js"></script>
+    <script src="bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.min.js"></script>
+    <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
+    <script src="bower_components/angulartics/dist/angulartics-ga.min.js"></script>
+    <script src="bower_components/angular-select2/dist/angular-select2.min.js"></script>
+    <script src="bower_components/angular-ui-select/dist/select.min.js"></script>
+    <script src="bower_components/ngFx/dist/ngFx.min.js"></script>
+    <script src="bower_components/angular-preload-image/angular-preload-image.min.js"></script>
+    <script src="bower_components/angular-error-shipper/dist/angular-error-shipper.min.js"></script>
+    <script src="bower_components/angular-spinner/angular-spinner.min.js"></script>
+    <!-- endbuild -->
+
+
+    <!-- build:js scripts/scripts.js -->
+     <script src="scripts/angular-conf/app.js"></script>
+    <script src="conf/config.js"></script>
+    <script src="scripts/service/service.js"></script>
+    <script src="scripts/angular-conf/route.js"></script>
+    <script src="scripts/angular-conf/interceptor.js"></script>
+    <script src="scripts/angular-conf/constant.js"></script>
+    <script src="scripts/angular-conf/url.js"></script>
+    <script src="scripts/filter/filters.js"></script>
+    <script src="scripts/factory/dataFactory.js"></script>
+    <script src="scripts/directive/custom.js"></script>
+    <script src="scripts/controller/MainCtrl.js"></script>
+    <script src="scripts/controller/LoginCtrl.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>

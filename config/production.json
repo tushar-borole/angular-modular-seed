@@ -1,0 +1,9 @@
+{ "analyticsAppId" : "UA-XXXXXXXX-1",
+  "facebookAppId" : "12345678901234",
+  "jsonurl" : "",
+  "name" : "production",
+  "backendurl" : "http://karma.nisostech.com/karma/",
+ "urlname":"development",
+ "viewbasepath":"",
+ "jsonpath":"/json/detailJson/"
+}
