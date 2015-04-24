@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 
     // Settings
     var appSettings = require('./config/application.conf.json');
-
+  
 
     // grunt.config.init({
     grunt.initConfig({
@@ -210,7 +210,10 @@ module.exports = function (grunt) {
         /*uglify configuration*/
         uglify: {
             options: {
-                mangle: false
+                mangle: true,
+                compress: {
+                    drop_console: true
+                }
             },
             my_target: {
                 files: [{
@@ -839,6 +842,16 @@ module.exports = function (grunt) {
         if (n == null) {
             grunt.warn('Build type must be specified');
         }
+        
+        //remove console from script
+        if (n == "production") {
+            grunt.config('uglify.options.compress.drop_console', true);
+        } else {
+             grunt.config('uglify.options.compress.drop_console', false);
+        }
+
+
+
         grunt.task.run('clean:dist',
             'ngconstant:' + n,
             'copy:dist',

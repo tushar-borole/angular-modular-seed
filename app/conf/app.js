@@ -3,7 +3,7 @@ Discription:angular app is setup from this file
 Copyright:Seed Inc 2014*/
 
 
-
+console.log("in app")
 if (typeof $ === 'undefined') { throw new Error('This application\'s JavaScript requires jQuery'); }
 
 // APP START
