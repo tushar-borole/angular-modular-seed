@@ -1,6 +1,6 @@
 /*Author: Tushar Borole
 Discription:rOOT OF ALL CONTROLLER
-Copyright:Copyright:Karma Worldwide Inc. 2014*/
+Copyright:Copyright:Seed Inc. 2014*/
 
 
 /**

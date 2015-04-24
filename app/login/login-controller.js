@@ -1,6 +1,6 @@
 /*Author: Tushar Borole
 Discription:Login page controller
-Copyright:Karma Worldwide Inc. 2014*/
+Copyright:Seed Inc. 2014*/
 
 
 
@@ -21,7 +21,7 @@ function ($scope, $http, dataFactory, ipCookie, notify, $translate, ngFabForm, $
                 ipCookie('auth', data);
                 $http.defaults.headers.common[APP_CONSTANTVALUE.token] = ipCookie('auth').access_token;
                 $timeout(function(){
-                $state.go('karmaapp.dashboard');
+                $state.go('seedapp.dashboard');
             });
 
             }, function () {

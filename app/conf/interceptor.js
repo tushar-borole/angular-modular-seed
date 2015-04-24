@@ -1,8 +1,9 @@
 /*Author: Tushar Borole
 Discription:Interceptor for angular
-Copyright:Karma Worldwide Inc. 2014*/
+Copyright:Seed Inc. 2014*/
 
 'use strict';
+/*
 App.run(function ($rootScope, $state, Restangular, $location,$timeout) {
     Restangular.setResponseExtractor(function (response, operation) {
         if (operation === 'getList') {
@@ -22,3 +23,4 @@ App.run(function ($rootScope, $state, Restangular, $location,$timeout) {
         return true; // error not handled
     });
 });
+*/

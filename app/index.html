@@ -8,7 +8,9 @@
 
     <!-- Page title set in pageTitle directive -->
     <title translate="constant.pagetitle"></title>
-
+<!-- build:css({.tmp,app}) app.css -->
+    <link href="bower_components/bootstrap/dist/bootstrap.min.css" rel="stylesheet"/>
+      <!-- endbuild -->
 
 
 
@@ -17,9 +19,9 @@
 <!-- ControllerAs syntax -->
 <!-- Main controller with serveral data used in Inspinia theme on diferent view -->
 
-<body ng-controller="MainCtrl as main" ng-class="{'gray-bg':$state.current.isFullpage}">
+<body ng-class="{'gray-bg':$state.current.isFullpage}">
 
-    <div ui-view></div>
+    <div ui-view=""></div>
 
     <!-- build:js scripts/core.js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -41,20 +43,20 @@
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbuild -->
-    
-        <!-- build:js scripts/scripts.js -->
-    <script src="common/common.js"></script>
-    <script src="conf/app.js"></script>
-    <script src="common/provider.js"></script>
-    <script src="conf/route.js"></script>
-    <script src="conf/script-config.js"></script>
-    <script src="conf/assets.js"></script>
+
+    <!-- build:js scripts/scripts.js -->
     <script src="conf/config.js"></script>
+    <script src="conf/app.js"></script>
+    <script src="conf/assets.js"></script>
+    <script src="conf/script-config.js"></script>
+    <script src="common/provider.js"></script>
     <script src="conf/route.js"></script>
     <script src="conf/interceptor.js"></script>
     <script src="conf/constant.js"></script>
     <script src="conf/url.js"></script>
     <!-- endbuild -->
+
+
 
 
 

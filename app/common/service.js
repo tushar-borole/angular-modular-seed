@@ -1,6 +1,6 @@
 /*Author: Tushar Borole
 Discription:Auth service check if user is siggedin
-Copyright:Karma Worldwide Inc. 2014*/
+Copyright:Seed Inc. 2014*/
 
 'use strict';
 

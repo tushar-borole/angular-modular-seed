@@ -1,6 +1,6 @@
 /*Author: Tushar Borole
 Discription:It contain page route information
-Copyright:Karma Worldwide Inc. 2014*/
+Copyright:Seed Inc. 2014*/
 
 
 App.config(['$ocLazyLoadProvider', 'APP_REQUIRES', function ($ocLazyLoadProvider, APP_REQUIRES) {

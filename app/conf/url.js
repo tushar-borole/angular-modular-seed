@@ -1,6 +1,6 @@
 /*Author: Tushar Borole
 Discription:It contain url depend on mock or development
-Copyright:Karma Worldwide Inc. 2014*/
+Copyright:Seed Inc. 2014*/
 
 App.constant('APP_URL', {
     'development': {

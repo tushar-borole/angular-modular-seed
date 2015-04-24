@@ -284,7 +284,8 @@ module.exports = function (grunt) {
               'json/*',
             'json/detailJson/*',
               'i18/*',
-              'views/**/*'
+              'views/**/*',
+                        '**/*.{html,css,js}'
           ]
         }, {
                     expand: true,

@@ -1,6 +1,6 @@
 /*Author: Tushar Borole
 Discription:It contain page route information
-Copyright:Karma Worldwide Inc. 2014*/
+Copyright:Seed Inc. 2014*/
 
 App.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteHelpersProvider',
 function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
@@ -11,7 +11,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
   $locationProvider.html5Mode(false);
 
   // default route
-  $urlRouterProvider.otherwise('/app/singleview');
+  $urlRouterProvider.otherwise('/app/login');
 
   // 
   // Application Routes
@@ -20,19 +20,18 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     .state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: helper.basepath('app.html'),
-        controller: 'AppController',
-        resolve: helper.resolveFor('modernizr', 'icons')
+        templateUrl: 'common/views/app.html',
+      resolve: helper.resolveFor('modernizr', 'icons')
     })
-    .state('app.singleview', {
-        url: '/singleview',
+    .state('app.login', {
+        url: '/login',
         title: 'Single View',
-        templateUrl: helper.basepath('singleview.html')
+        templateUrl: 'login/login.html'
     })
     .state('app.submenu', {
         url: '/submenu',
         title: 'Submenu',
-        templateUrl: helper.basepath('submenu.html')
+        templateUrl: 'common/views/submenu.html'
     })
     // 
     // CUSTOM RESOLVES
@@ -54,4 +53,3 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
 
 
 }])
-

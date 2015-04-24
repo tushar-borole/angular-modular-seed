@@ -1,6 +1,6 @@
 /*Author: Tushar Borole
 Discription:angular app is setup from this file
-Copyright:Karma Worldwide Inc 2014*/
+Copyright:Seed Inc 2014*/
 
   /*!
  * 
@@ -48,7 +48,7 @@ App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', f
     // Scope Globals
     // ----------------------------------- 
     $rootScope.app = {
-      name: 'Angle',
+      name: 'seed',
       description: 'Angular Bootstrap Admin Template',
       year: ((new Date()).getFullYear()),
       layout: {

@@ -1,6 +1,6 @@
 /*Author: Tushar Borole
 Discription:It contain all constant value ie all constant value is imported from this file
-Copyright:Karma Worldwide Inc. 2014*/
+Copyright:Seed Inc. 2014*/
 
 
 /**=========================================================

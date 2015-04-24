@@ -1,6 +1,6 @@
  /*Author: Tushar Borole
    Discription:all restapis are Called from here
-   Copyright:Karma Worldwide Inc. 2014*/
+   Copyright:Seed Inc. 2014*/
  'use strict';
 
 
