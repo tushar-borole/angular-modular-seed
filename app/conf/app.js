@@ -2,15 +2,7 @@
 Discription:angular app is setup from this file
 Copyright:Seed Inc 2014*/
 
-  /*!
- * 
- * Angle - Bootstrap Admin App + AngularJS
- * 
- * Author: @themicon_co
- * Website: http://themicon.co
- * License: http://support.wrapbootstrap.com/knowledge_base/topics/usage-licenses
- * 
- */
+
 
 if (typeof $ === 'undefined') { throw new Error('This application\'s JavaScript requires jQuery'); }
 

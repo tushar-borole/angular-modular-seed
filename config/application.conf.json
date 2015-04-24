@@ -43,7 +43,7 @@ Copyright:NisosTechnologies 2014*/
     "showDocularDocs": "true" // setting to "true" will build the Official Docular API docs also
   },
     "files":{
-        htmlfile:["*.html","views/**/*.html"]
+        htmlfile:["*.html","**/*.html"]
 
     }
 }

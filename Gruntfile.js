@@ -210,7 +210,25 @@ module.exports = function (grunt) {
         /*uglify configuration*/
         uglify: {
             options: {
-                mangle: true
+                mangle: false
+            },
+            my_target: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= settings.dist.dir %>',
+                    src: ['*.js', '**/*.js', '!bower_components/**'],
+                    dest: '<%= settings.dist.dir %>'
+        }]
+            }
+        },
+        cssmin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= settings.dist.dir %>',
+                    src: ['*.css', '**/*.css', '!bower_components/**'],
+                    dest: '<%= settings.dist.dir %>'
+        }]
             }
         },
 
