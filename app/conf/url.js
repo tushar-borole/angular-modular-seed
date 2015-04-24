@@ -1,7 +1,8 @@
 /*Author: Tushar Borole
 Discription:It contain url depend on mock or development
 Copyright:Seed Inc. 2014*/
-
+(function () {
+    'use strict';
 App.constant('APP_URL', {
     'development': {
         'loginuser': 'api/login',
@@ -113,3 +114,4 @@ App.constant('APP_URL', {
 
     }
 });
+    }())

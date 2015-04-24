@@ -2,7 +2,8 @@
 Discription:Interceptor for angular
 Copyright:Seed Inc. 2014*/
 
-'use strict';
+(function () {
+    'use strict';
 /*
 App.run(function ($rootScope, $state, Restangular, $location,$timeout) {
     Restangular.setResponseExtractor(function (response, operation) {
@@ -24,3 +25,4 @@ App.run(function ($rootScope, $state, Restangular, $location,$timeout) {
     });
 });
 */
+}())
