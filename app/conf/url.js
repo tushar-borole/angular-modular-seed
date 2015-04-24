@@ -2,7 +2,7 @@
 Discription:It contain url depend on mock or development
 Copyright:Karma Worldwide Inc. 2014*/
 
-app.constant('APP_URL', {
+App.constant('APP_URL', {
     'development': {
         'loginuser': 'api/login',
         'loggedinuser': 'api/v1/users/loggedInUser',

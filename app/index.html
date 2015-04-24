@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="karma">
+<html ng-app="seed">
 
 <head>
 
@@ -9,27 +9,7 @@
     <!-- Page title set in pageTitle directive -->
     <title translate="constant.pagetitle"></title>
 
-   <!-- build:css({.tmp,app}) styles/main.css -->
-    <link href="bower_components/ng-tags-input/ng-tags-input.min.css" rel="stylesheet">
-    <link href="bower_components/summernote/dist/summernote-bs3.css" rel="stylesheet">
-    <link href="bower_components/summernote/dist/summernote.css" rel="stylesheet">
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="bower_components/animate.css/animate.min.css" rel="stylesheet">
-    <link href="bower_components/angular-notify/dist/angular-notify.min.css" rel="stylesheet">
-    <link href="bower_components/ng-table/ng-table.min.css" rel="stylesheet">
-    <link href="bower_components/switchery/dist/switchery.min.css" rel="stylesheet">
-    <link href="bower_components/chosen/chosen.css" rel="stylesheet">
-    <link href="bower_components/angular-chosen-localytics/chosen-spinner.css" rel="stylesheet">
-    <link href="bower_components/select2/select2.css" rel="stylesheet">
-    <link href="bower_components/angular-ui-select/dist/select.min.css" rel="stylesheet">
-    <link href="bower_components/Hover/css/hover-min.css" rel="stylesheet">
-    <link href="bower_components/iCheck/skins/square/green.css" rel="stylesheet">
-    <link href="bower_components/angular-loading/angular-loading.css" rel="stylesheet">
-    <link href="assets/css/common.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
-    <link href="bower_components/helper.css/dist/helper.min.css" rel="stylesheet">
-    <!-- endbuild -->
+
 
 
 </head>
@@ -41,82 +21,43 @@
 
     <div ui-view></div>
 
-     <!-- build:js scripts/core.js -->
+    <!-- build:js scripts/core.js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-loader-url/angular-translate-loader-url.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+    <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbuild -->
-
-   <!-- build:js scripts/plugins.js -->
-    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/metisMenu/dist/metisMenu.js"></script>
-    <script src="bower_components/pace/pace.min.js"></script>
-    <script src="bower_components/slimScroll/jquery.slimscroll.min.js"></script>
-    <script src="bower_components/underscore/underscore-min.js"></script>
-    <script src="bower_components/moment/min/moment.min.js"></script>
-    <script src="bower_components/summernote/dist/summernote.js"></script>
-    <script src="bower_components/bootbox/bootbox.js"></script>
-    <script src="bower_components/switchery/dist/switchery.min.js"></script>
-    <script src="bower_components/chosen/chosen.jquery.min.js"></script>
-    <script src="bower_components/Chart.js/Chart.min.js"></script>
-    <script src="bower_components/select2/select2.min.js"></script>
-    <script src="bower_components/iCheck/icheck.min.js"></script>
-    <script src="bower_components/spin.js/spin.js"></script>
-    <!-- endbuild -->
-
-
-
-    <!-- build:js scripts/modules.js -->
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="bower_components/ng-file-upload/angular-file-upload-all.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="bower_components/angular-translate/angular-translate.min.js"></script>
-    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="bower_components/restangular/dist/restangular.min.js"></script>
-    <script src="bower_components/angular-cookie/angular-cookie.min.js"></script>
-    <script src="bower_components/angular-notify/dist/angular-notify.min.js"></script>
-    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
-    <script src="bower_components/ng-fab-form/dist/ng-fab-form.min.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-    <script src="bower_components/ng-table/ng-table.min.js"></script>
-    <script src="bower_components/ng-busy/build/angular-busy.min.js"></script>
-    <script src="bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
-    <script src="bower_components/ngBootbox/dist/ngBootbox.min.js"></script>
-    <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
-    <script src="bower_components/ng-switchery/src/ng-switchery.js"></script>
-    <script src="bower_components/ng-table-export/ng-table-export.js"></script>
-    <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
-    <script src="bower_components/angular-truncate/src/truncate.js"></script>
-    <script src="bower_components/angles/angles.js"></script>
-    <script src="bower_components/angular-chosen-localytics/chosen.js"></script>
-    <script src="bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.min.js"></script>
-    <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
-    <script src="bower_components/angulartics/dist/angulartics-ga.min.js"></script>
-    <script src="bower_components/angular-select2/dist/angular-select2.min.js"></script>
-    <script src="bower_components/angular-ui-select/dist/select.min.js"></script>
-    <script src="bower_components/ngFx/dist/ngFx.min.js"></script>
-    <script src="bower_components/angular-preload-image/angular-preload-image.min.js"></script>
-    <script src="bower_components/angular-error-shipper/dist/angular-error-shipper.min.js"></script>
-    <script src="bower_components/angular-spinner/angular-spinner.min.js"></script>
-    <!-- endbuild -->
-
-
-    <!-- build:js scripts/scripts.js -->
+    
+        <!-- build:js scripts/scripts.js -->
     <script src="common/common.js"></script>
-     <script src="conf/app.js"></script>
+    <script src="conf/app.js"></script>
+    <script src="common/provider.js"></script>
+    <script src="conf/route.js"></script>
+    <script src="conf/script-config.js"></script>
+    <script src="conf/assets.js"></script>
     <script src="conf/config.js"></script>
-    <script src="common/service.js"></script>
     <script src="conf/route.js"></script>
     <script src="conf/interceptor.js"></script>
     <script src="conf/constant.js"></script>
     <script src="conf/url.js"></script>
-    <script src="common/filter.js"></script>
-    <script src="common/factory.js"></script>
-    <script src="login/login-controller.js"></script>
-    <script src="common/main-controller.js"></script>
     <!-- endbuild -->
+
+
+
 </body>
 
 </html>

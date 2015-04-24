@@ -3,7 +3,7 @@ Discription:Interceptor for angular
 Copyright:Karma Worldwide Inc. 2014*/
 
 'use strict';
-app.run(function ($rootScope, $state, Restangular, $location,$timeout) {
+App.run(function ($rootScope, $state, Restangular, $location,$timeout) {
     Restangular.setResponseExtractor(function (response, operation) {
         if (operation === 'getList') {
             var newResponse = response.resp;

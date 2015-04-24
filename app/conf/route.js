@@ -2,108 +2,56 @@
 Discription:It contain page route information
 Copyright:Karma Worldwide Inc. 2014*/
 
+App.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteHelpersProvider',
+function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
+  'use strict';
 
-/*$stateProvider:- Provider service provided by angular ui router
-$translateProvider:-Provider service provided by angular translate
-,APP_CONSTANT,APP_CONFIG:- Custom service import in config*/
-function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFormProvider, RestangularProvider, APP_CONSTANT, APP_CONFIG, $enviornment) {
-    $urlRouterProvider.otherwise('/app/login');
-    $stateProvider
-    /*    Full page screen route*/
-        .state('app', {
-            url: '/app',
-            templateUrl: 'common/views/fullpage.html',
-            data: {
-                pageTitle: 'Example view'
-            }
-        })
-        .state('app.login', {
-            url: '/login',
-            templateUrl: 'login/login.html',
-            data: {
-                pageTitle: 'Example view'
-            },
-            routename: 'login',
-            isFullpage: true,
-            controller: 'LoginCtrl'
-        })
-        .state('karmaapp', {
-            url: '/karmaapp',
-            templateUrl: 'common/views/halfpage.html',
-            data: {
-                pageTitle: 'Example view'
-            },
-            resolve: {
-                load: 'authService'
-            }
-        })
-        .state('karmaapp.dashboard', {
-            url: '/dashboard',
-            templateUrl: 'views/dashboard.html',
-            data: {
-                pageTitle: 'Example view'
-            },
-            controller: 'DashboardCtrl'
-        });
-    $translateProvider.useStaticFilesLoader({
-        prefix: 'assets/i18/',
-        suffix: '.json'
-    });
-    //var baseurl = $environment.url;
-    console.log($enviornment)
-    RestangularProvider.setBaseUrl($enviornment.backendurl);
+  // Set the following to true to enable the HTML5 Mode
+  // You may have to set <base> tag in index and a routing configuration in your server
+  $locationProvider.html5Mode(false);
 
-    $translateProvider.preferredLanguage('en');
-    ngFabFormProvider.extendConfig({
-        setAsteriskForRequiredLabel: true
-    });
+  // default route
+  $urlRouterProvider.otherwise('/app/singleview');
 
-    /*It is custom insert for ngFabFor directive*/
-    var customInsertFn = function (compiledAlert, el, attrs) {
-        // insert after or after parent if checkbox or radio
-        if (angular.isDefined(attrs.$attr.chosen)) {
-            $(".chosen-container").after(compiledAlert);
-        } else {
-            el.after(compiledAlert);
-        }
-    };
-    ngFabFormProvider.setInsertErrorTplFn(customInsertFn);
+  // 
+  // Application Routes
+  // -----------------------------------   
+  $stateProvider
+    .state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: helper.basepath('app.html'),
+        controller: 'AppController',
+        resolve: helper.resolveFor('modernizr', 'icons')
+    })
+    .state('app.singleview', {
+        url: '/singleview',
+        title: 'Single View',
+        templateUrl: helper.basepath('singleview.html')
+    })
+    .state('app.submenu', {
+        url: '/submenu',
+        title: 'Submenu',
+        templateUrl: helper.basepath('submenu.html')
+    })
+    // 
+    // CUSTOM RESOLVES
+    //   Add your own resolves properties
+    //   following this object extend
+    //   method
+    // ----------------------------------- 
+    // .state('app.someroute', {
+    //   url: '/some_url',
+    //   templateUrl: 'path_to_template.html',
+    //   controller: 'someController',
+    //   resolve: angular.extend(
+    //     helper.resolveFor(), {
+    //     // YOUR RESOLVES GO HERE
+    //     }
+    //   )
+    // })
+    ;
 
 
+}])
 
-
-
-}
-app
-    .config(config)
-    .run(function ($rootScope, $state, APP_CONSTANTVALUE, $enviornment,errorShipper) {
-        $rootScope.$state = $state;
-        /*fallback image in application*/
-        $rootScope.fallbackimage = {};
-        $rootScope.fallbackimage = APP_CONSTANTVALUE.fallbackimage;
-    $rootScope.$constant=APP_CONSTANTVALUE;
-        $enviornment.jsonurl = window.location.protocol + '//' + window.location.host;
-        $enviornment.name = $enviornment.jsonurl+=$enviornment.jsonpath;
-console.log( $enviornment.name)
-        /*summernote global configuration is set here*/
-        $rootScope.summernoteConfig = {
-            height: 150,
-            toolbar: [
-          ['style', ['bold', 'italic', 'underline', 'clear']],
-          ['fontsize', ['fontsize']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['height', ['height']]
-        ]
-        };
-
-  //custome error shipper angular
-    errorShipper.use(function (payload) {
-        console.log(payload)
-        // do something with payload
-    });
-
-console.log(window.location)
-
-
-    });
