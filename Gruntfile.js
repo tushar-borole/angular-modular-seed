@@ -298,58 +298,10 @@ module.exports = function (grunt) {
                     cwd: '<%= settings.dev.dir %>',
                     dest: '<%= settings.dist.dir %>',
                     src: [
-            '*.{ico,png,txt,html}',
-            '.htaccess',
-            'images/**/*.{webp}',
-            'fonts/*',
-              'json/*',
-            'json/detailJson/*',
-              'i18/*',
-              'views/**/*',
-                        '**/*.{html,css,js}'
-          ]
-        }, {
-                    expand: true,
-                    cwd: '.tmp/images',
-                    dest: '<%= settings.dist.dir %>/images',
-                    src: [
-            'generated/*'
+                        '**/**'
           ]
         }]
             },
-            styles: {
-                expand: true,
-                cwd: '<%= settings.dev.dir %>/styles',
-                dest: '.tmp/styles/',
-                src: '**/*.css'
-            },
-            image: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= settings.dev.dir %>/images',
-                    src: '**/*.{png,jpg,jpeg,gif}',
-                    dest: '<%= settings.dist.dir %>/images'
-                  }, {
-                    expand: true,
-                    flatten: true,
-                    cwd: '<%= settings.dev.dir %>/bower_components',
-                    src: '**/*.{png,jpg,jpeg,gif}',
-                    dest: '<%= settings.dist.dir %>/images'
-                }]
-            },
-            html: {
-                expand: true,
-                cwd: '<%= settings.dev.dir %>/views',
-                src: '**/*.{html}',
-                dest: '<%= settings.dist.dir %>/views'
-            },
-            font: {
-                expand: true,
-                flatten: true,
-                cwd: '<%= settings.dev.dir %>/bower_components',
-                src: '**/*.{woff,ttf}',
-                dest: '<%= settings.dist.dir %>/fonts'
-            }
         },
 
         // Build config - REV (rename)
@@ -856,9 +808,6 @@ module.exports = function (grunt) {
             'ngconstant:' + n,
             'copy:dist',
             'useminPrepare',
-            'copy:styles',
-            'copy:image',
-            'copy:font',
             'svgmin',
             'autoprefixer',
             'concat',
