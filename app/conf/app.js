@@ -4,7 +4,9 @@ Copyright:Seed Inc 2014*/
 
 
 console.log("in app")
-if (typeof $ === 'undefined') { throw new Error('This application\'s JavaScript requires jQuery'); }
+if (typeof $ === 'undefined') {
+    throw new Error('This application\'s JavaScript requires jQuery');
+}
 
 // APP START
 // ----------------------------------- 
@@ -21,10 +23,10 @@ var App = angular.module('seed', [
     'cfp.loadingBar',
     'ngSanitize',
     'ngResource',
-    'ui.utils'
+    'ui.utils', 'permission'
   ]);
 
-App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', function ($rootScope, $state, $stateParams, $window, $templateCache) {
+App.run(["$rootScope", "$state", "$stateParams", '$window', '$templateCache', 'Permission', function ($rootScope, $state, $stateParams, $window, $templateCache, Permission) {
     // Set reference to access them from any scope
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
@@ -37,31 +39,39 @@ App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', f
         }
     });*/
 
+
+    Permission.defineRole('admin', function (stateParams) {
+        // If the returned value is *truthy* then the user has the role, otherwise they don't
+        /*  if (!User) {
+            return true; // Is anonymous
+          }*/
+        return true;
+    });
+
     // Scope Globals
     // ----------------------------------- 
     $rootScope.app = {
-      name: 'seed',
-      description: 'Angular Bootstrap Admin Template',
-      year: ((new Date()).getFullYear()),
-      layout: {
-        isFixed: true,
-        isCollapsed: false,
-        isBoxed: false,
-        isRTL: false,
-        horizontal: false,
-        isFloat: false,
-        asideHover: false,
-        theme: null
-      },
-      useFullLayout: false,
-      hiddenFooter: false,
-      viewAnimation: 'ng-fadeInUp'
+        name: 'seed',
+        description: 'Angular Bootstrap Admin Template',
+        year: ((new Date()).getFullYear()),
+        layout: {
+            isFixed: true,
+            isCollapsed: false,
+            isBoxed: false,
+            isRTL: false,
+            horizontal: false,
+            isFloat: false,
+            asideHover: false,
+            theme: null
+        },
+        useFullLayout: false,
+        hiddenFooter: false,
+        viewAnimation: 'ng-fadeInUp'
     };
     $rootScope.user = {
-      name:     'John',
-      job:      'ng-developer',
-      picture:  'app/img/user/02.jpg'
+        name: 'John',
+        job: 'ng-developer',
+        picture: 'app/img/user/02.jpg'
     };
 
 }]);
-
