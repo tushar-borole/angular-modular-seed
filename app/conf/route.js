@@ -28,7 +28,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
                 templateUrl: 'login/login.html',
                 controller: 'LoginController',
                 controllerAs: 'login',
-                resolve: helper.resolveFor('modernizr', 'icons', 'toaster', 'login'),
+                resolve: helper.resolveFor('modernizr', 'icons', 'toaster','sweetalert', 'login'),
                 data: {
                     permissions: {
                         only: ['admin', 'moderator']

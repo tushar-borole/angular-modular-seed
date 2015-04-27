@@ -2,7 +2,8 @@
      // jQuery based and standalone scripts
      scripts: {
          'modernizr': ['bower_components/modernizr/modernizr.js'],
-         'icons': ['bower_components/fontawesome/css/font-awesome.min.css']
+         'icons': ['bower_components/fontawesome/css/font-awesome.min.css'],
+         'sweetalert':['bower_components/sweetalert/lib/sweet-alert.min.js', 'bower_components/sweetalert/lib/sweet-alert.css','assets/script/directive/sweetalert.directive.js']
      },
      // Angular based script (use the right module name)
      modules: [
@@ -15,7 +16,7 @@
      angularscript: [
          {
              name: 'login',
-             files: ['login/login.controller.js']
+             files: ['login/login.controller.js','assets/script/directive/sweetalert.directive.js']
          }
     ]
 

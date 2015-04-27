@@ -27,11 +27,12 @@ var App = angular.module('seed', [
     'ui.utils', 'permission','ngFabForm'
   ]);
 
-App.run(["$rootScope", "$state", "$stateParams", '$window', '$templateCache', 'Permission', function ($rootScope, $state, $stateParams, $window, $templateCache, Permission) {
+App.run(["$rootScope", "$state", "$stateParams", '$window', '$templateCache', 'Permission','APP_CONSTANTVALUE', function ($rootScope, $state, $stateParams, $window, $templateCache, Permission,APP_CONSTANTVALUE) {
     // Set reference to access them from any scope
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     $rootScope.$storage = $window.localStorage;
+    $rootScope.$constant=APP_CONSTANTVALUE;
 
     // Uncomment this to disable template cache
     /*$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
