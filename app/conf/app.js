@@ -18,12 +18,13 @@ var App = angular.module('seed', [
     'ngCookies',
     'pascalprecht.translate',
     'ui.bootstrap',
+    'ngMessages',
     'ui.router',
     'oc.lazyLoad',
     'cfp.loadingBar',
     'ngSanitize',
     'ngResource',
-    'ui.utils', 'permission'
+    'ui.utils', 'permission','ngFabForm'
   ]);
 
 App.run(["$rootScope", "$state", "$stateParams", '$window', '$templateCache', 'Permission', function ($rootScope, $state, $stateParams, $window, $templateCache, Permission) {

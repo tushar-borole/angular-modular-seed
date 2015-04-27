@@ -43,7 +43,8 @@
     "simple-line-icons": "0.1.1",
     "bootstrap":"3.3.4",
       "angularjs-toaster": "0.4.8",
-      "angular-permission":"0.2.0"
+      "angular-permission":"0.2.0",
+      "ng-fab-form":"1.2.7"
   },
   "resolutions": {
     "angular": "1.3.15"
