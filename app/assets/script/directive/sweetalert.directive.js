@@ -30,11 +30,11 @@
                 swal(sweetOptions,
                     function (isConfirm) {
                         if (isConfirm) {
-                            swal(sweetConfirmOption);
-                            scope.$evalAsync(attrs.sweetOnConfirm);
+                            if (sweetConfirmOption) swal(sweetConfirmOption);
+                            if (attrs.sweetOnConfirm) scope.$evalAsync(attrs.sweetOnConfirm);
                         } else {
-                            swal(sweetCancelOption);
-                             scope.$evalAsync(attrs.sweetOnCancel);
+                            if (sweetConfirmOption) swal(sweetConfirmOption);
+                            if (attrs.sweetOnCancel) scope.$evalAsync(attrs.sweetOnCancel);
                         }
                     });
 

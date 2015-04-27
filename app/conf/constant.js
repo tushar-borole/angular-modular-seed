@@ -53,8 +53,6 @@ Copyright:Seed Inc. 2014*/
                 confirmButtonColor: '#DD6B55',
                 confirmButtonText: 'Yes, delete it!',
                 cancelButtonText: 'No, cancel plx!',
-                closeOnConfirm: false,
-                closeOnCancel: false
             },
             'status': [{
                 'name': 'Active',
