@@ -7,13 +7,14 @@ Copyright:Seed Inc. 2014*/
     'use strict';
 
     angular
-        .module
+        .module('seed')
         .controller('LoginController', LoginController);
 
     function LoginController() {
         var login = this;
         // unresolved
         login.movies;
+        console.log("inn")
 
 
     }

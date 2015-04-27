@@ -20,13 +20,15 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     .state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: 'common/views/app.html',
-      resolve: helper.resolveFor('modernizr', 'icons')
+        templateUrl: 'common/views/app.html'
     })
     .state('app.login', {
         url: '/login',
         title: 'Single View',
-        templateUrl: 'login/login.html'
+        templateUrl: 'login/login.html',
+      controller:'LoginController',
+      controllerAs: 'login',
+      resolve: helper.resolveFor('modernizr', 'icons','toaster','login')
     })
     .state('app.submenu', {
         url: '/submenu',

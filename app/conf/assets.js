@@ -6,7 +6,17 @@
      },
      // Angular based script (use the right module name)
      modules: [
-      // { name: 'toaster', files: ['vendor/angularjs-toaster/toaster.js','vendor/angularjs-toaster/toaster.css'] }
+         {
+             name: 'toaster',
+             files: ['bower_components/angularjs-toaster/toaster.js', 'bower_components/angularjs-toaster/toaster.css']
+         }
+    ],
+     // Angular based script (use the right module name)
+     angularscript: [
+         {
+             name: 'login',
+             files: ['login/login.controller.js']
+         }
     ]
 
  });
