@@ -2,7 +2,8 @@
 Discription:It contain page route information
 Copyright:Seed Inc. 2014*/
 
-App.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteHelpersProvider',
+ angular
+        .module('seed').config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'RouteHelpersProvider',
 function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         'use strict';
 

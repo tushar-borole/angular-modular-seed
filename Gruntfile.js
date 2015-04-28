@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 
     // Settings
     var appSettings = require('./config/application.conf.json');
-  
+
 
     // grunt.config.init({
     grunt.initConfig({
@@ -210,7 +210,7 @@ module.exports = function (grunt) {
         /*uglify configuration*/
         uglify: {
             options: {
-                mangle: true,
+                mangle: false,
                 compress: {
                     drop_console: true
                 }
@@ -219,7 +219,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= settings.dist.dir %>',
-                    src: ['*.js', '**/*.js', '!bower_components/**'],
+                    src: ['*.js', '**/*.js', '!assets/vendor/**'],
                     dest: '<%= settings.dist.dir %>'
         }]
             }
@@ -284,6 +284,14 @@ module.exports = function (grunt) {
           ]
         }]
             },
+            vendor: {
+                files: [{
+                    dot: true,
+                    src: [
+            '<%= settings.dist.dir %>/assets/vendor'
+          ]
+        }]
+            },
             server: '.tmp',
             docs: '<%= settings.docs.dir %>',
             coverage: '<%= settings.test.coverage.dir %>'
@@ -294,12 +302,19 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    dot: true,
                     cwd: '<%= settings.dev.dir %>',
                     dest: '<%= settings.dist.dir %>',
                     src: [
                         '**/**'
           ]
+        }]
+            },
+            vendor: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= settings.dev.dir %>',
+                    dest: '<%= settings.dist.dir %>',
+                    src: []
         }]
             },
         },
@@ -473,15 +488,13 @@ module.exports = function (grunt) {
         },*/
         ngconstant: {
             // Options for all targets
-            options: {
-                space: '  ',
-                wrap: '\n\n {%= __ngModule %}',
-                name: 'Config',
-            },
             // Environment targets
             development: {
                 options: {
-                    dest: '<%= settings.dev.dir %>/conf/config.js'
+                    dest: '<%= settings.dev.dir %>/conf/config.js',
+                    space: '  ',
+                    wrap: '\n\n {%= __ngModule %}',
+                    name: 'Config',
                 },
                 constants: {
                     $enviornment: require('./config/development.json')
@@ -489,7 +502,10 @@ module.exports = function (grunt) {
             },
             staging: {
                 options: {
-                    dest: '<%= settings.dev.dir %>/conf/config.js'
+                    dest: '<%= settings.dev.dir %>/conf/config.js',
+                    space: '  ',
+                    wrap: '\n\n {%= __ngModule %}',
+                    name: 'Config',
                 },
                 constants: {
                     $enviornment: require('./config/staging.json')
@@ -497,7 +513,10 @@ module.exports = function (grunt) {
             },
             production: {
                 options: {
-                    dest: '<%= settings.dev.dir %>/conf/config.js'
+                    dest: '<%= settings.dev.dir %>/conf/config.js',
+                    space: '  ',
+                    wrap: '\n\n {%= __ngModule %}',
+                    name: 'Config',
                 },
                 constants: {
                     $enviornment: require('./config/production.json')
@@ -505,12 +524,26 @@ module.exports = function (grunt) {
             },
             mock: {
                 options: {
-                    dest: '<%= settings.dev.dir %>/conf/config.js'
+                    dest: '<%= settings.dev.dir %>/conf/config.js',
+                    space: '  ',
+                    wrap: '\n\n {%= __ngModule %}',
+                    name: 'Config',
                 },
                 constants: {
                     $enviornment: require('./config/mock.json')
                 }
-            }
+            },
+            assets: {
+                options: {
+                    space: '  ',
+                    wrap: '\n\n {%= __ngModule %}',
+                    name: 'apprequire',
+                    dest: '<%= settings.dev.dir %>/conf/assets.js'
+                },
+                constants: {
+                    APP_REQUIRES: grunt.file.readJSON('app/conf/assets.json')
+                }
+            },
         },
 
         // unit testing config
@@ -710,6 +743,7 @@ module.exports = function (grunt) {
             grunt.warn('Build type must be specified');
         }
         grunt.task.run('ngconstant:' + n,
+            'ngconstant:assets',
             'connect:devel',
             // 'concurrent:dev'
             'watch');
@@ -794,19 +828,51 @@ module.exports = function (grunt) {
         if (n == null) {
             grunt.warn('Build type must be specified');
         }
-        
+
         //remove console from script
         if (n == "production") {
             grunt.config('uglify.options.compress.drop_console', true);
         } else {
-             grunt.config('uglify.options.compress.drop_console', false);
+            grunt.config('uglify.options.compress.drop_console', false);
         }
+
+        var copyFiles = grunt.file.readJSON('app/conf/assets.json')
+        var finalCopyFiles = []
+            // get files from json
+        if (copyFiles.modules) {
+            for (var m in copyFiles.modules) {
+                for (var file in copyFiles.modules[m].files) {
+                    finalCopyFiles.push(copyFiles.modules[m].files[file])
+                }
+            }
+        };
+        if (copyFiles.scripts) {
+            for (var m in copyFiles.scripts) {
+                for (var file in copyFiles.scripts[m].files) {
+                    finalCopyFiles.push(copyFiles.scripts[m].files[file])
+                }
+            }
+        };
+        if (copyFiles.angularscript) {
+            for (var m in copyFiles.angularscript) {
+                for (var file in copyFiles.angularscript[m].files) {
+                    finalCopyFiles.push(copyFiles.angularscript[m].files[file])
+                }
+            }
+        };
+        console.log(finalCopyFiles)
+        grunt.config('copy.vendor.files[0].src', finalCopyFiles);
+
+
 
 
 
         grunt.task.run('clean:dist',
             'ngconstant:' + n,
+            'ngconstant:assets',
             'copy:dist',
+            //'clean:vendor',
+            //'copy:vendor',
             'useminPrepare',
             'svgmin',
             'autoprefixer',

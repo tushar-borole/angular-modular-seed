@@ -24,7 +24,7 @@ var App = angular.module('seed', [
     'cfp.loadingBar',
     'ngSanitize',
     'ngResource',
-    'ui.utils', 'permission', 'ngFabForm', 'restangular', 'Config','ui.scroll'
+    'ui.utils', 'permission', 'ngFabForm', 'restangular', 'Config','ui.scroll','apprequire'
   ]);
 
 App.run(["$rootScope", "$state", "$stateParams", '$window', '$templateCache', 'Permission', 'APP_CONSTANTVALUE', function ($rootScope, $state, $stateParams, $window, $templateCache, Permission, APP_CONSTANTVALUE) {

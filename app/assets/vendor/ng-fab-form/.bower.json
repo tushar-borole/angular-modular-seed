@@ -1,0 +1,52 @@
+{
+  "name": "ng-fab-form",
+  "description": "Fabulous helper to help you with your daily form coding.",
+  "version": "1.2.7",
+  "authors": [
+    "Johannes Millan <johannes.millan@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johannesjo/ng-fab-form.git"
+  },
+  "homepage": "http://johannesjo.github.io/ng-fab-form/",
+  "license": "LGPL-2.1",
+  "main": "dist/ng-fab-form.js",
+  "keywords": [
+    "angular",
+    "AngularJS",
+    "form",
+    "forms",
+    "form helper",
+    "validation",
+    "autofocus",
+    "scroll to",
+    "input",
+    "select",
+    "textarea"
+  ],
+  "ignore": [
+    "gh-pages",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.4",
+    "angular-messages": "~1.3.4"
+  },
+  "devDependencies": {
+    "angular-animate": "~1.3.4",
+    "angular-mocks": "~1.3.13"
+  },
+  "_release": "1.2.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.7",
+    "commit": "019c1a749b0a71f45cf2b3add2de09b82e65296e"
+  },
+  "_source": "git://github.com/johannesjo/ng-fab-form.git",
+  "_target": "1.2.7",
+  "_originalSource": "ng-fab-form"
+}

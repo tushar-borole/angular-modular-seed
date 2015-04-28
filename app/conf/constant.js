@@ -10,7 +10,8 @@ Copyright:Seed Inc. 2014*/
 
 (function () {
     'use strict';
-    App.constant('APP_COLORS', {
+    angular
+        .module('seed').constant('APP_COLORS', {
             'primary': '#5d9cec',
             'success': '#27c24c',
             'info': '#23b7e5',

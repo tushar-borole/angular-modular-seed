@@ -4,7 +4,8 @@ Copyright:Seed Inc. 2014*/
 (function () {
     'use strict';
 
-    App.config(['$ocLazyLoadProvider', 'APP_REQUIRES', function ($ocLazyLoadProvider, APP_REQUIRES) {
+      angular
+        .module('seed').config(['$ocLazyLoadProvider', 'APP_REQUIRES', function ($ocLazyLoadProvider, APP_REQUIRES) {
         'use strict';
 
         // Lazy Load modules configuration

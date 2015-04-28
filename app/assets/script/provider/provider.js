@@ -60,7 +60,14 @@ App.provider('RouteHelpers', ['APP_REQUIRES', function (appRequires) {
                             }
                         }
                     }
-                    return appRequires.scripts && appRequires.scripts[name];
+                      if (appRequires.scripts) {
+                        for (var m in appRequires.scripts) {
+                            if (appRequires.scripts[m].name && appRequires.scripts[m].name === name) {
+                                return appRequires.scripts[m];
+                            }
+                        }
+                    }
+           
                 }
 
 
