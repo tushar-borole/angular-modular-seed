@@ -25,7 +25,7 @@
     "angularscript": [
         {
             "name": "login",
-            "files": ["login/login.controller.js", "login/login.factory.js", "assets/script/directive/sweetalert.directive.js"]
+            "files": ["modules/login/login.controller.js", "modules/login/login.factory.js", "assets/script/directive/sweetalert.directive.js"]
          }
     ]
 

@@ -26,7 +26,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
             .state('app.login', {
                 url: '/login',
                 title: 'Single View',
-                templateUrl: 'login/login.html',
+                templateUrl: 'modules/login/login.html',
                 controller: 'LoginController',
                 controllerAs: 'login',
                 resolve: helper.resolveFor('modernizr', 'icons', 'toaster','sweetalert','ui.select', 'login'),
