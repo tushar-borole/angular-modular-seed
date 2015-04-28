@@ -1,24 +1,30 @@
 (function () {
     'use strict';
     angular
-        .module
-        .factory('login', login);
+        .module('seed')
+        .factory('loginFactory', loginFactory);
 
-    function login() {
-        var loginFactory = {};
+    loginFactory.$inject = ['Restangular','APP_URL','$enviornment'];
 
-
-        /**
-         * @description [[ Function to make GetAllCenter API]]
-         * @name centFactory.get
-         * @param  {Object} data [[data contain Offset,Limit,Role,search keywords]]
-         */
-        loginFactory.get = function (data) {
-            var url = APP_URL[$enviornment.urlname].getcenter;
-            var postType = restangularParams('post', $enviornment.urlname);
-            return Restangular[postType.value](url)[postType.type](data);
+    /* @ngInject */
+    function loginFactory(Restangular,APP_URL,$enviornment) {
+        var exports = {
+            login: login
         };
 
 
+        return exports;
+
+        ////////////////
+
+        function login() {
+            var url = APP_URL[$enviornment.urlname].login;
+            var postType = restangularParams('post', $enviornment.urlname);
+            return Restangular.withConfig(function (RestangularConfigurer) {
+                RestangularConfigurer.setBaseUrl($enviornment.backendurl);
+            })[postType.value](url)[postType.type]({
+                status: status
+            });
+        }
     }
 })();

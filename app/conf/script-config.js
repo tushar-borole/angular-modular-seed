@@ -29,7 +29,7 @@ Copyright:Seed Inc. 2014*/
 }]).config(['$translateProvider', function ($translateProvider) {
 
         $translateProvider.useStaticFilesLoader({
-            prefix: 'app/i18n/',
+            prefix: 'assets/i18/',
             suffix: '.json'
         });
         $translateProvider.preferredLanguage('en');
