@@ -34,7 +34,7 @@ App.provider('RouteHelpers', ['APP_REQUIRES', function (appRequires) {
                             return promise.then(function () {
                                 // if is a module, pass the name. If not, pass the array
                                 var whatToLoad = getRequired(_arg);
-                                console.log(whatToLoad)
+                          
                                     // simple error check
                                 if (!whatToLoad) return $.error('Route resolve: Bad resource name [' + _arg + ']');
                                 // finally, return a promise
@@ -45,7 +45,7 @@ App.provider('RouteHelpers', ['APP_REQUIRES', function (appRequires) {
                     // analyze module items with the form [name: '', files: []]
                     // and also simple array of script files (for not angular js)
                 function getRequired(name) {
-                    console.log(name)
+              
                     if (appRequires.modules) {
                         for (var m in appRequires.modules) {
                             if (appRequires.modules[m].name && appRequires.modules[m].name === name) {

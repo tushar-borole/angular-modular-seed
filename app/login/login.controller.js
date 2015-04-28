@@ -28,6 +28,13 @@ Copyright:Seed Inc. 2014*/
 
         }
 
+        login.randomData = [];
+        for (var i = 0; i < 500; i++) {
+            login.randomData.push({
+                'name': 'check' + i
+            })
+        }
+
 
     }
 })();
