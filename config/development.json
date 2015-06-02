@@ -2,9 +2,9 @@
   "facebookAppId" : "803251069707321",
   "jsonurl" : "",
   "name" : "development",
-  "backendurl" : "http://karma-staging.nisostech.com/karma/",
- "backendurlngo" : "http://karma-staging.nisostech.com/karma-be-ngo/",
-  "backendurlsocial" : "http://karma-staging.nisostech.com/social/",
+  "backendurl" : "http://seed.nisostech.com/karma/",
+ "backendurlngo" : "http://seed.nisostech.com/karma-be-ngo/",
+  "backendurlsocial" : "http://seed.nisostech.com/social/",
  "urlname":"development",
  "viewbasepath":"",
  "jsonpath":"/json/detailJson/"

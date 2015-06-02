@@ -2,7 +2,7 @@
   "facebookAppId" : "12345678901234",
   "jsonurl" : "",
   "name" : "staging",
-  "backendurl" : "http://192.168.1.14:8888/karma/",
+  "backendurl" : "http://192.168.1.14:8888/seed/",
  "urlname":"development",
  "viewbasepath":"",
  "jsonpath":"/json/detailJson/"
