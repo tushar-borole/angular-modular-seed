@@ -29,12 +29,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
                 templateUrl: 'modules/login/login.html',
                 controller: 'LoginController',
                 controllerAs: 'login',
-                resolve: helper.resolveFor('modernizr', 'icons', 'toaster','sweetalert','ui.select', 'login'),
-                data: {
-                    permissions: {
-                        only: ['admin', 'moderator']
-                    }
-                }
+                resolve: helper.resolveFor('modernizr', 'icons', 'toaster','sweetalert','ui.select', 'login')
             })
             .state('app.submenu', {
                 url: '/submenu',

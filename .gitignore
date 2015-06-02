@@ -12,3 +12,4 @@ desktop.ini
 
 # uncomment this if you make changes to Bootstrap 3 so that your changes persist through Git for the project
 #!app/bower_components/sass-bootstrap
+/app/assets/vendor/
