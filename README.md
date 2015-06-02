@@ -158,7 +158,7 @@ Open an issue first to discuss potential changes/additions. If you have question
 
 ### Copyright
 
-Copyright (c) 2014-2015 [Tushar Borole](www.tusharborole.com)
+Copyright (c) 2014-2015 [Tushar Borole](http://www.tusharborole.com)
 
 ### (The MIT License)
 Permission is hereby granted, free of charge, to any person obtaining
