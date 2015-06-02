@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Angular-modular-seed : Angular Modular Seed">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Angular-modular-seed</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/tushariscoolster/angular-modular-seed">View on GitHub</a>
+
+          <h1 id="project_title">Angular-modular-seed</h1>
+          <h2 id="project_tagline">Angular Modular Seed</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/tushariscoolster/angular-modular-seed/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/tushariscoolster/angular-modular-seed/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="angular-modular-seed" class="anchor" href="#angular-modular-seed" aria-hidden="true"><span class="octicon octicon-link"></span></a>Angular modular Seed</h1>
+
+<p>This is and seed with modular approach, which is created, thing the performance of application and easy development for the developer</p>
+
+<hr>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ol>
+<li>Lazy loading of Contoller, factory, service, directive and javascript libraries</li>
+<li>Using bower and npm to load front end dependencies</li>
+<li>Application configuration file in json (development.json, production.json , staging.json)</li>
+<li>CSS and scripts are loaded from json file (Prevent a large index.html)</li>
+<li>Folder structure are in terms of Freatures in your application.</li>
+</ol>
+
+<blockquote>
+<p><strong>Note:</strong></p>
+
+<ul>
+<li>This seed include contibtribution from many people from my organization and github, Its not standards seed</li>
+</ul>
+</blockquote>
+
+<h4>
+<a id="-setup-the-seed" class="anchor" href="#-setup-the-seed" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<i></i> Setup the seed</h4>
+
+<p>To set up the seed you need to follow the following step;</p>
+
+<p>Open node js and execute following command</p>
+
+<pre><code>git clone https://github.com/tushariscoolster/angular-modular-seed
+npm install
+bower install
+npm install grunt -g
+npm install grunt-cli -g
+</code></pre>
+
+<h4>
+<a id="-working-with-seed" class="anchor" href="#-working-with-seed" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<i></i> Working With seed</h4>
+
+<p>Working with seed is very easy
+Seed has very few core concepts you need to follow
+Seed has three type of json file <strong>development.json</strong> <strong>staging.json</strong> <strong>production.json</strong>
+This json files are in folder location here <a href="https://github.com/tushariscoolster/angular-modular-seed/tree/master/config">Click Here</a></p>
+
+<p>When you run</p>
+
+<pre><code>grunt server:development
+</code></pre>
+
+<p>Configuration are taken from development.json</p>
+
+<h4>
+<a id="-loading-assets-files" class="anchor" href="#-loading-assets-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<i></i> Loading Assets files</h4>
+
+<p>In this seed we load script and js from <strong>assets.json</strong> </p>
+
+<pre><code>{
+"scripts": [
+    {
+        "name": "icons",
+        "files": ["assets/vendor/modernizr/modernizr.js"]
+    }
+],
+"modules": [
+    {
+        "name": "toaster",
+        "files": ["assets/vendor/angularjs-toaster/toaster.js", "assets/vendor/angularjs-toaster/toaster.css"]
+     }
+],
+"angularscript": [
+    {
+        "name": "login",
+        "files": ["modules/login/login.controller.js", "modules/login/login.factory.js", "assets/script/directive/sweetalert.directive.js"]
+     }
+]
+</code></pre>
+
+<p>If You want to load specific module foe specific route</p>
+
+<p>You route.js will become</p>
+
+<pre><code>.state('app.login', {
+            url: '/login',
+            title: 'Single View',
+            templateUrl: 'modules/login/login.html',
+            controller: 'LoginController',
+            controllerAs: 'login',
+            resolve: helper.resolveFor(toaster, 'login')
+        })
+</code></pre>
+
+<h4>
+<a id="-generating-dist-copy" class="anchor" href="#-generating-dist-copy" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<i></i> Generating dist copy</h4>
+
+<p>To generate the dist copy of you app
+run </p>
+
+<pre><code>grunt build:production
+</code></pre>
+
+<blockquote>
+<p><strong>Note:-</strong> production indicates configuration will be picked from production.json</p>
+</blockquote>
+
+<p>Throught the seed have followed the style guide of <a href="https://github.com/johnpapa/angular-styleguide">Johnpapa</a></p>
+
+<h4>
+<a id="-integration-with-backedn" class="anchor" href="#-integration-with-backedn" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<i></i> Integration with backedn</h4>
+
+<p>My motive to create this seed was, front end should be created with static json and does not ahve to wai for apis for backend</p>
+
+<p>So i created url.js</p>
+
+<pre><code>  'development': {
+        'login': 'api/login'
+
+    },
+    'mock': {
+        'login': 'assets/json/login.json'
+    }
+</code></pre>
+
+<p>When user run </p>
+
+<pre><code>grunt server:development
+</code></pre>
+
+<p>Automatically login api will be called by application where as when user run</p>
+
+<pre><code>grunt server:mock
+</code></pre>
+
+<p>automatically all backend url will get chage to static.json</p>
+
+<p>Before that you need to write the factories in following way</p>
+
+<pre><code> function login() {
+        var url = APP_URL[$enviornment.urlname].login;
+        var postType = restangularParams('post', $enviornment.urlname);
+        return Restangular.withConfig(function (RestangularConfigurer) {
+            RestangularConfigurer.setBaseUrl($enviornment.backendurl);
+        })[postType.value](url)[postType.type]({
+            status: status
+        });
+    }
+</code></pre>
+
+<p>Where login indicate the key value in url.js</p>
+
+<p>You can seed the sample of login module i  have implemented in below seed</p>
+
+<hr>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Open an issue first to discuss potential changes/additions. If you have questions with the guide, feel free to leave them as issues in the repository. If you find a typo, create a pull request. The idea is to keep the content up to date and use github’s native feature to help tell the story with issues and PR’s, which are all searchable via google. Why? Because odds are if you have a question, someone else does too! You can learn more here at about how to contribute.</p>
+
+<p><em>By contributing to this repository you are agreeing to make your content available subject to the license of this repository.</em></p>
+
+<h3>
+<a id="process" class="anchor" href="#process" aria-hidden="true"><span class="octicon octicon-link"></span></a>Process</h3>
+
+<pre><code>1. Discuss the changes in a GitHub issue.
+2. Open a Pull Request, reference the issue, and explain the change and why it adds value.
+3. The Pull Request will be evaluated and either merged or declined.
+</code></pre>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Use this guide. Attributions are appreciated._</p>
+
+<h3>
+<a id="copyright" class="anchor" href="#copyright" aria-hidden="true"><span class="octicon octicon-link"></span></a>Copyright</h3>
+
+<p>Copyright (c) 2014-2015 <a href="www.tusharborole.com">Tushar Borole</a></p>
+
+<h3>
+<a id="the-mit-license" class="anchor" href="#the-mit-license" aria-hidden="true"><span class="octicon octicon-link"></span></a>(The MIT License)</h3>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Angular-modular-seed maintained by <a href="https://github.com/tushariscoolster">tushariscoolster</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
