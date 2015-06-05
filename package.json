@@ -1,9 +1,9 @@
 {
-    "name": "Karma",
+    "name": "angular-modular-seed",
     "private": true,
     "version": "0.0.1",
     "author": {
-        "name": "Karma"
+        "name": "angular-modular-seed"
     },
     "dependencies": {},
     "devDependencies": {
