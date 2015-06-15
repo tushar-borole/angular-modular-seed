@@ -36,7 +36,7 @@ Open node js and execute following command
     npm install grunt -g
     npm install grunt-cli -g
 
-#### <i class="icon-folder-open"></i> Working With seed
+#### <i class="icon-folder-open"></i> Working with seed
 
 Working with seed is very easy
 Seed has very few core concepts you need to follow
@@ -100,7 +100,7 @@ run
 Throught the seed have followed the style guide of [Johnpapa](https://github.com/johnpapa/angular-styleguide)
 
 
-#### <i class="icon-hdd"></i> Integration with backedn
+#### <i class="icon-hdd"></i> Integration with back-end
 
 My motive to create this seed was, front end should be created with static json and does not ahve to wai for apis for backend
 
