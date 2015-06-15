@@ -15,7 +15,7 @@ Features
  2. Using bower and npm to load front end dependencies
  3. Application configuration file in json (development.json, production.json , staging.json)
  4. CSS and scripts are loaded from json file (Prevent a large index.html)
- 5. Folder structure are in terms of Freatures in your application.
+ 5. Folder structure are in terms of Features in your application.
 
 
 
