@@ -1,3 +1,12 @@
+/**
+ *  * @description factory for login page
+    * @author Tushar Borole
+    * @createDate 05/06/2015
+    * @copyright 2014 © Seed. All Rights Reserved.
+    */
+
+
+
 (function () {
     'use strict';
     angular
