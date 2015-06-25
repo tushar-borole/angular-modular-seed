@@ -43,7 +43,7 @@
 		{
 			"name": "login",
 			"files": [
-				"modules/login/loin.controller.js",
+				"modules/login/login.controller.js",
 				"modules/login/login.factory.js",
 				"common/directive/sweetalert.directive.js"
 			]

@@ -143,7 +143,11 @@ module.exports = function (grunt) {
         // Watch config
         watch: {
             json: {
-                files: ['<%= settings.dev.dir %>/**/*.json']
+                files: ['<%= settings.dev.dir %>/**/*.json', '!<%= settings.dev.dir %>/conf/*.json'],
+                tasks: ['ngconstant:development',
+            'merge-json',
+            'ngconstant:assets',
+            'ngconstant:url']
             }
         },
 
@@ -328,7 +332,7 @@ module.exports = function (grunt) {
             }
         },
 
-    
+
         minifyHtml: {
             options: {
                 empty: true, // KEEP empty attributes
@@ -677,7 +681,7 @@ module.exports = function (grunt) {
   ]);
     //run task on file chage
     grunt.event.on('watch', function (action, filepath, target) {
-       grunt.config('merge-json');
+        grunt.task.run('server');
     });
 
 
