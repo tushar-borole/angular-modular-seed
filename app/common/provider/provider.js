@@ -53,17 +53,17 @@ App.provider('RouteHelpers', ['APP_REQUIRES', function (appRequires) {
                             }
                         }
                     }
-                    if (appRequires.angularscript) {
-                        for (var m in appRequires.angularscript) {
-                            if (appRequires.angularscript[m].name && appRequires.angularscript[m].name === name) {
-                                return appRequires.angularscript[m];
+                    if (appRequires.app) {
+                        for (var m in appRequires.app) {
+                            if (appRequires.app[m].name && appRequires.app[m].name === name) {
+                                return appRequires.app[m];
                             }
                         }
                     }
-                      if (appRequires.scripts) {
-                        for (var m in appRequires.scripts) {
-                            if (appRequires.scripts[m].name && appRequires.scripts[m].name === name) {
-                                return appRequires.scripts[m];
+                      if (appRequires.library) {
+                        for (var m in appRequires.library) {
+                            if (appRequires.library[m].name && appRequires.library[m].name === name) {
+                                return appRequires.library[m];
                             }
                         }
                     }

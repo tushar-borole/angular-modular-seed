@@ -1,0 +1,13 @@
+{
+    "modules": [
+        {
+            "name": "toaster",
+            "files": ["assets/vendor/angularjs-toaster/toaster.js", "assets/vendor/angularjs-toaster/toaster.css"]
+         },
+        {
+            "name": "ui.select",
+            "files": ["common/directive/select.js",
+                                                  "assets/css/select.min.css", "common/directive/uiselectremote.directive.js", "common/directive/uiselectviewvalue.directive.js"]
+         }
+    ]
+}

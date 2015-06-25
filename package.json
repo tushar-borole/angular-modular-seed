@@ -33,10 +33,11 @@
         "autostrip-json-comments": "~0.0.4",
         "grunt-ng-annotate": "^0.4.0",
         "grunt-minify-html": "1.1.1",
-         "grunt-karma": "~0.6.2",
-        "grunt-usemin-list":"0.1.4",
-        "grunt-ng-constant":"1.1.0",
-          "grunt-text-replace": "0.4.0"
+        "grunt-karma": "~0.6.2",
+        "grunt-usemin-list": "0.1.4",
+        "grunt-ng-constant": "1.1.0",
+        "grunt-text-replace": "0.4.0",
+        "grunt-merge-json": "0.9.5"
 
     },
     "scripts": {

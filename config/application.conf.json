@@ -7,7 +7,7 @@ Copyright:NisosTechnologies 2014*/
     Development Server
   */
   "dev": {
-    "port": "9000", // default 9000
+    "port": "9005", // default 9000
     "dir": "./app", // the development directory of your app
     "liveReloadPort": "35729", // default 35729
     "hostname": "localhost" // using 0.0.0.0 will make the server accessible from anywhere

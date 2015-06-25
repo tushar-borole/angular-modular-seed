@@ -1,0 +1,14 @@
+{
+    "library": [
+        {
+            "name": "icons",
+            "files": ["assets/vendor/modernizr/modernizr.js"]
+        }, {
+            "name": "modernizr",
+            "files": ["assets/vendor/fontawesome/css/font-awesome.min.css"]
+        }, {
+            "name": "sweetalert",
+            "files": ["assets/vendor/sweetalert/lib/sweet-alert.min.js", "assets/vendor/sweetalert/lib/sweet-alert.css", "common/directive/sweetalert.directive.js"]
+        }
+    ]
+}

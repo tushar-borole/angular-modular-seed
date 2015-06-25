@@ -449,43 +449,6 @@ module.exports = function (grunt) {
             },
         },
 
-
-        // Build config - Replace Google CDN references
-        /*     cdnify: {
-            dist: {
-                html: ['<%= settings.dist.dir %>/*.html']
-            }
-        },
-*/
-        // Documentation config.
-        /*     docular: {
-            docular_webapp_target: '<%= settings.docs.dir %>',
-            showDocularDocs: '<%= settings.docs.showDocularDocs %>',
-            showAngularDocs: '<%= settings.docs.showAngularDocs %>',
-            groups: [
-                {
-                    groupTitle: 'CleverStack Angular',
-                    groupId: 'cleverstack',
-                    groupIcon: 'icon-book',
-                    sections: [
-                        {
-                            id: "api",
-                            title: "API",
-                            showSource: true,
-                            docs: [
-                        "api.doc"
-                    ],
-                            scripts: [
-                      "app/scripts/"
-                    ]
-                }
-            ]
-        }
-        ]
-        },*/
-        /*    'docular-server': {
-            port: '<%= settings.docs.port %>'
-        },*/
         ngconstant: {
             // Options for all targets
             // Environment targets
@@ -540,10 +503,31 @@ module.exports = function (grunt) {
                     name: 'apprequire',
                     dest: '<%= settings.dev.dir %>/conf/assets.js'
                 },
-                constants: {
-                    APP_REQUIRES: grunt.file.readJSON('app/conf/assets.json')
-                }
+                /* constants: {
+                     APP_REQUIRES: 'app/conf/assets.json'
+                 },*/
+
+                constants: function () {
+                    return {
+                        APP_REQUIRES: grunt.file.readJSON('app/conf/assets.json')
+                    };
+                },
+
             },
+            url: {
+                options: {
+                    space: '  ',
+                    wrap: '\n\n {%= __ngModule %}',
+                    name: 'url',
+                    dest: '<%= settings.dev.dir %>/conf/url.js'
+                },
+                constants: function () {
+                    return {
+                        APP_URL: grunt.file.readJSON('app/conf/url.json')
+                    };
+                },
+
+            }
         },
 
         // unit testing config
@@ -601,24 +585,18 @@ module.exports = function (grunt) {
             }
         },
 
-        /*    // e2e protractor testing config
-        protractor: {
-            options: {
-                configFile: "./config/spec-e2e.conf.js"
+        'merge-json': {
+            assets: {
+                src: ["<%= settings.dev.dir %>/**/*.script.json"],
+                dest: "<%= settings.dev.dir %>/conf/assets.json"
             },
-            singlerun: {
-                keepAlive: false
-            },
-            auto: {
-                keepAlive: true,
-                options: {
-                    args: {
-                        seleniumPort: 4444
-                    }
-                }
+            url: {
+                src: ["<%= settings.dev.dir %>/**/*.url.json"],
+                dest: "<%= settings.dev.dir %>/conf/url.json"
             }
         },
-*/
+
+
         // Open config
         open: {
             dev: {
@@ -743,7 +721,9 @@ module.exports = function (grunt) {
             grunt.warn('Build type must be specified');
         }
         grunt.task.run('ngconstant:' + n,
+            'merge-json',
             'ngconstant:assets',
+            'ngconstant:url',
             'connect:devel',
             // 'concurrent:dev'
             'watch');
@@ -752,74 +732,14 @@ module.exports = function (grunt) {
 
 
 
-    grunt.registerTask('server:test:unit', 'Start up the auto unit test server.', [
-    'autotest:unit'
-  ]);
-
-    grunt.registerTask('server:coverage', 'Start up the unit test code coverage server.', [
-    'connect:coverage'
-  ]);
-
-    grunt.registerTask('server:test:e2e', 'Start up the auto unit test server.', [
-    'autotest:e2e'
-  ]);
-
     grunt.registerTask('server:dist', 'Start up the production app preview server.', [
     'connect:dist',
           'watch'
   ]);
 
-    grunt.registerTask('server:docs', 'Start up the api documentation server.', [
-    'docular-server'
-  ]);
+   
 
 
-
-    /* -- TEST TASKS ------------------------------------------------ */
-
-    grunt.registerTask('test', 'Start up the auto unit test server.', [
-    'autotest:unit'
-  ]);
-
-    grunt.registerTask('test:prepare', 'Prepare files for tests.', [
-    'clean:server',
-    'concurrent:test',
-    'autoprefixer'
-  ]);
-
-    grunt.registerTask('test:unit', 'Single run of unit tests.', [
-    'karma:unit'
-  ]);
-
-    grunt.registerTask('autotest:unit', 'Start up the auto unit test server.', [
-    // 'test:prepare',
-    'karma:unitAuto',
-    'watch:jsUnitTest'
-  ]);
-
-    grunt.registerTask('test:coverage', 'Run a test coverage report.', [
-    // 'test:prepare',
-    'karma:unitCoverage',
-    'open:coverage',
-    'connect:coverage'
-  ]);
-
-    grunt.registerTask('test:e2e', 'Single run of end to end (e2e) tests using protractor.', [
-    'connect:livereload',
-    'protractor:singlerun'
-  ]);
-
-    grunt.registerTask('autotest:e2e', 'Start up the auto end to end (e2e) test server using protractor.', [
-    'protractor:auto',
-    'watch:protractor'
-  ]);
-
-    grunt.registerTask('test:travis', 'Single run of unit tests for Travis CI.', [
-    'test:prepare',
-    'karma:travis'
-  ]);
-
-    /* -- BUILD TASKS ----------------------------------------------- */
 
 
     /* @discription
@@ -837,31 +757,8 @@ module.exports = function (grunt) {
         }
 
         var copyFiles = grunt.file.readJSON('app/conf/assets.json')
-        var finalCopyFiles = []
-            // get files from json
-        if (copyFiles.modules) {
-            for (var m in copyFiles.modules) {
-                for (var file in copyFiles.modules[m].files) {
-                    finalCopyFiles.push(copyFiles.modules[m].files[file])
-                }
-            }
-        };
-        if (copyFiles.scripts) {
-            for (var m in copyFiles.scripts) {
-                for (var file in copyFiles.scripts[m].files) {
-                    finalCopyFiles.push(copyFiles.scripts[m].files[file])
-                }
-            }
-        };
-        if (copyFiles.angularscript) {
-            for (var m in copyFiles.angularscript) {
-                for (var file in copyFiles.angularscript[m].files) {
-                    finalCopyFiles.push(copyFiles.angularscript[m].files[file])
-                }
-            }
-        };
-        console.log(finalCopyFiles)
-        grunt.config('copy.vendor.files[0].src', finalCopyFiles);
+
+        //grunt.config('copy.vendor.files[0].src', finalCopyFiles);
 
 
 
@@ -869,7 +766,9 @@ module.exports = function (grunt) {
 
         grunt.task.run('clean:dist',
             'ngconstant:' + n,
+             'merge-json',
             'ngconstant:assets',
+            'ngconstant:url',
             'copy:dist',
             //'clean:vendor',
             //'copy:vendor',
