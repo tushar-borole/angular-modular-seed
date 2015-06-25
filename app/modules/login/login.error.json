@@ -1,0 +1,8 @@
+{
+    "login": {
+        "title": "Start",
+        "error": {
+            "loginerror": "Invalid User Name And Password"
+        }
+    }
+}

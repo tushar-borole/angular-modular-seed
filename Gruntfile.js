@@ -142,49 +142,8 @@ module.exports = function (grunt) {
 
         // Watch config
         watch: {
-            js: {
-                files: [
-          '{.tmp,<%= settings.dev.dir %>}/scripts/**/*.js',
-          '<%= settings.dev.dir %>/bower_components/bootstrap/js/*.js'
-        ],
-                tasks: ['newer:jshint:all']
-            },
-            less: {
-                files: [
-          '<%= settings.dev.dir %>/styles/**/*.less',
-          '<%= settings.dev.dir %>/bower_components/bootstrap/less/*.less'
-        ],
-                tasks: ['less:dev']
-            },
-            styles: {
-                files: ['<%= settings.dev.dir %>/styles/**/*.css'],
-                tasks: ['newer:copy:styles', 'autoprefixer']
-            },
-            livereload: {
-                options: {
-                    livereload: true
-                },
-                files: [
-          // '<%= watch.js.files %>',
-          '<%= settings.dev.dir %>/**/*.html',
-          '.tmp/styles/**/*.css',
-          // '<%= settings.dev.dir %>/styles/**/*.{css,less}',
-          '<%= settings.dev.dir %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
-            },
-            gruntfile: {
-                files: ['Gruntfile.js']
-                    // tasks: ['default']
-            },
-            jsUnitTest: {
-                files: ['test/spec-unit/**/*.js']
-                    // tasks: ['newer:jshint:test', 'karma']
-                    // tasks: ['karma:unit']
-            },
-            protractor: {
-                // files: ['<%= settings.dev.dir %>/scripts/**/*.js','test/spec-e2e/**/*.js'],
-                files: ['test/spec-e2e/**/*.js'],
-                tasks: ['protractor:singlerun']
+            json: {
+                files: ['<%= settings.dev.dir %>/**/*.json']
             }
         },
 
@@ -369,32 +328,7 @@ module.exports = function (grunt) {
             }
         },
 
-        // Build config - htmlmin
-        /*        htmlmin: {
-            dist: {
-                options: {
-
-                },
-                files: [{
-                    expand: true,
-                    cwd: '<%= settings.dev.dir %>',
-                    src: '<%= settings.files.htmlfile %>',
-                    dest: '<%= settings.dist.dir %>'
-        }]
-            },
-            deploy: {
-                options: {
-                    collapseWhitespace: true,
-
-                },
-                files: [{
-                    expand: true,
-                    cwd: '<%= settings.dist.dir %>',
-                    src: '<%= settings.files.htmlfile %>',
-                    dest: '<%= settings.dist.dir %>'
-        }]
-            }
-        },*/
+    
         minifyHtml: {
             options: {
                 empty: true, // KEEP empty attributes
@@ -593,6 +527,10 @@ module.exports = function (grunt) {
             url: {
                 src: ["<%= settings.dev.dir %>/**/*.url.json"],
                 dest: "<%= settings.dev.dir %>/conf/url.json"
+            },
+            error: {
+                src: ["<%= settings.dev.dir %>/**/*.error.json"],
+                dest: "<%= settings.dev.dir %>/conf/error.json"
             }
         },
 
@@ -652,58 +590,6 @@ module.exports = function (grunt) {
         }
 
 
-        /* shell: {
-            options: {
-                stdout: true,
-                async: false
-            },
-            // Install locally dev dependencies in package.json (node_modules/*)
-            npm_install: {
-                command: 'npm install'
-            },
-            // Install locally bower components (app/bower_components/*)
-            bower_install: {
-                command: 'bower install'
-            },
-            // Download latest version of selenium server
-            // https://code.google.com/p/selenium/downloads/list
-            // ALL -> http://selenium.googlecode.com/files/selenium-server-2.39.0.zip
-            // JAR -> http://selenium.googlecode.com/files/selenium-server-standalone-2.39.0.jar
-            selenium_install: {
-                // todo: download selenium 2 .jar file based on environment
-                command: ''
-                // execOptions: {
-                //   cwd: './test/selenium/'
-                // }
-            },
-            // Download latest chrome driver
-            // http://chromedriver.storage.googleapis.com/index.html
-            // Win32 -> http://chromedriver.storage.googleapis.com/2.8/chromedriver_win32.zip
-            // Linux32 -> http://chromedriver.storage.googleapis.com/2.8/chromedriver_linux32.zip
-            // Linux64 -> http://chromedriver.storage.googleapis.com/2.8/chromedriver_linux64.zip
-            // Mac32 -> http://chromedriver.storage.googleapis.com/2.8/chromedriver_mac32.zip
-            chromedriver_install: {
-                // todo: download chrome driver .exe based on environment
-                command: ''
-            },
-            // Download latest version of phantomjs
-            // http://phantomjs.org/download.html
-            // Win -> https://phantomjs.googlecode.com/files/phantomjs-1.9.2-windows.zip
-            // Mac -> https://phantomjs.googlecode.com/files/phantomjs-1.9.2-macosx.zip
-            // Linux32 -> https://phantomjs.googlecode.com/files/phantomjs-1.9.2-linux-i686.tar.bz2
-            // Linux64 -> https://phantomjs.googlecode.com/files/phantomjs-1.9.2-linux-x86_64.tar.bz2
-            phantomjs_manual_install: {
-                // todo: download phantomjs .exe based on environment
-                command: ''
-            },
-            // Download latest version of protractor
-            // You need to apply this patch to fix a known bug: https://github.com/angular/protractor/issues/85
-            // https://github.com/vrtdev/protractor/commit/2f18b01378e4f054331df23ce536e4081ee1ccf0
-            protractor_install: {
-                // todo: apply patch to latest version of protractor
-                command: ''
-            }
-        }*/
 
     });
 
@@ -726,7 +612,7 @@ module.exports = function (grunt) {
             'ngconstant:url',
             'connect:devel',
             // 'concurrent:dev'
-            'watch');
+            'watch:json');
     });
 
 
@@ -737,7 +623,7 @@ module.exports = function (grunt) {
           'watch'
   ]);
 
-   
+
 
 
 
@@ -766,7 +652,7 @@ module.exports = function (grunt) {
 
         grunt.task.run('clean:dist',
             'ngconstant:' + n,
-             'merge-json',
+            'merge-json',
             'ngconstant:assets',
             'ngconstant:url',
             'copy:dist',
@@ -785,38 +671,14 @@ module.exports = function (grunt) {
     });
 
 
-    /* -- DOCS TASKS ----------------------------------------------- */
-
-    grunt.registerTask('docs:build', 'Build the api documentation.', [
-    'clean:docs',
-    'docular'
-  ]);
-    grunt.registerTask('docs', 'Build the docs and start the docs server.', [
-    'docs:build',
-    'server:docs'
-  ]);
-
-
-    /* -- INSTALL TASKS -------------------------------------------- */
-
-    grunt.registerTask('install', 'Install stuff that is required for development servers.', [
-    "shell:npm_install",
-    "shell:bower_install",
-    "shell:selenium_install",
-    "shell:chromedriver_install",
-    "shell:phantomjs_manual_install",
-    "shell:protractor_install",
-    "build",
-    "docs:build",
-    "karma:unitCoverage"
-  ]);
-
-
-    /* -- DEFAULT TASK --------------------------------------------- */
 
     grunt.registerTask('default', 'Run all servers.', [
     'server'
   ]);
+    //run task on file chage
+    grunt.event.on('watch', function (action, filepath, target) {
+       grunt.config('merge-json');
+    });
 
 
 

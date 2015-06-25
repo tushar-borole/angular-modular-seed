@@ -30,10 +30,10 @@ Copyright:Seed Inc. 2014*/
 }]).config(['$translateProvider', function ($translateProvider) {
 
         $translateProvider.useStaticFilesLoader({
-            prefix: 'assets/i18/',
+            prefix: 'conf/',
             suffix: '.json'
         });
-        $translateProvider.preferredLanguage('en');
+        $translateProvider.preferredLanguage('error');
         $translateProvider.useLocalStorage();
         $translateProvider.usePostCompiling(true);
 

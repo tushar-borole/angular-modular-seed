@@ -2,6 +2,6 @@
 
  angular.module('url', [])
 
-.constant('APP_URL', {development:{logins:'api/login',login:'api/login'},mock:{logins:'assets/json/login.json',login:'assets/json/login.json'}})
+.constant('APP_URL', {development:{login:'api/login'},mock:{login:'assets/json/login.json'}})
 
 ;

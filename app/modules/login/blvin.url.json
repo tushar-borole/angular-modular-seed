@@ -1,9 +1,0 @@
-{
-    "development": {
-        "logins": "api/login"
-
-    },
-    "mock": {
-        "logins": "assets/json/login.json"
-    }
-}
