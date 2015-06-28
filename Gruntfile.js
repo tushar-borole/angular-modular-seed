@@ -11,6 +11,7 @@ module.exports = function (grunt) {
     //require('time-grunt')(grunt);
     require('autostrip-json-comments');
     var fs = require('fs');
+    var scriptArray = [];
 
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
@@ -267,19 +268,9 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '<%= settings.dev.dir %>',
                     dest: '<%= settings.dist.dir %>',
-                    src: [
-                        '**/**'
-          ]
+                    src: ['**/**', '!assets/vendor/**/**']
         }]
-            },
-            vendor: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= settings.dev.dir %>',
-                    dest: '<%= settings.dist.dir %>',
-                    src: []
-        }]
-            },
+            }
         },
 
         // Build config - REV (rename)
@@ -447,7 +438,7 @@ module.exports = function (grunt) {
 
                 constants: function () {
                     return {
-                        APP_REQUIRES: grunt.file.readJSON('app/conf/assets.json')
+                        APP_REQUIRES: grunt.file.readJSON('.tmp/assets.json')
                     };
                 },
 
@@ -461,7 +452,7 @@ module.exports = function (grunt) {
                 },
                 constants: function () {
                     return {
-                        APP_URL: grunt.file.readJSON('app/conf/url.json')
+                        APP_URL: grunt.file.readJSON('.tmp/url.json')
                     };
                 },
 
@@ -526,15 +517,53 @@ module.exports = function (grunt) {
         'merge-json': {
             assets: {
                 src: ["<%= settings.dev.dir %>/**/*.script.json"],
-                dest: "<%= settings.dev.dir %>/conf/assets.json"
+                dest: ".tmp/assets.json"
             },
             url: {
                 src: ["<%= settings.dev.dir %>/**/*.url.json"],
-                dest: "<%= settings.dev.dir %>/conf/url.json"
+                dest: ".tmp/url.json"
             },
             error: {
                 src: ["<%= settings.dev.dir %>/**/*.error.json"],
-                dest: "<%= settings.dev.dir %>/conf/error.json"
+                dest: ".tmp/error.json"
+            }
+        },
+        search: {
+            obscenities: {
+                files: {
+                    src: ['.tmp/assets.json']
+                },
+                options: {
+                    searchString: /"(.*|\n*)(\s*|\n*).(css|js)/ig,
+                    logFile: ".tmp/match.json",
+                    logFormat: "json",
+                    onMatch: function (match) {
+                        
+                        var matches=match.match.replace('"','')
+                        console.log(matches)
+                        scriptArray.push(matches)
+                            // called when a match is made. The parameter is an object of the
+                            // following structure: { file: "", line: X, match: "" }
+                    },
+                    onComplete: function (matches) {
+                        console.log(scriptArray)
+                        var vendorScript = {
+                            files: [{
+                                expand: true,
+                                cwd: '<%= settings.dev.dir %>',
+                                dest: '<%= settings.dist.dir %>',
+                                src: scriptArray
+        }]
+                        };
+                        grunt.config.set('copy.vendor', vendorScript);
+                        console.log(grunt.config.get('copy.vendor'))
+                        //grunt.task.run("copy:vendor")
+                            // called when all files have been parsed for the target. The
+                            // matches parameter is an object of the format:
+                            // `{ numMatches: N, matches: {} }`. The matches /property is
+                            // an object of filename => array of matches
+                    },
+                }
             }
         },
 
@@ -626,6 +655,34 @@ module.exports = function (grunt) {
     'connect:dist',
           'watch'
   ]);
+    grunt.registerTask('assetspath', function () {
+        var done = this.async();
+
+
+
+        var re = /\b.*(.js|.css)\b/g;
+        var json = grunt.file.readJSON('app/conf/assets.json')
+        var str = JSON.stringify(json);
+        console.log(str)
+        var m;
+        var array = [];
+
+        while ((m = re.exec(str)) !== null) {
+            if (m.index === re.lastIndex) {
+                re.lastIndex++;
+            }
+            // View your result using the m-variable.
+            // eg m[0] etc.
+            //array.push(m[0])
+            console.log(m[0])
+        }
+        setTimeout(function () {
+            // console.log(array)
+            done()
+        }, 2000000)
+
+
+    });
 
 
 
@@ -646,7 +703,7 @@ module.exports = function (grunt) {
             grunt.config('uglify.options.compress.drop_console', false);
         }
 
-        var copyFiles = grunt.file.readJSON('app/conf/assets.json')
+
 
         //grunt.config('copy.vendor.files[0].src', finalCopyFiles);
 
@@ -660,8 +717,9 @@ module.exports = function (grunt) {
             'ngconstant:assets',
             'ngconstant:url',
             'copy:dist',
+            'search:obscenities',
             //'clean:vendor',
-            //'copy:vendor',
+            'copy:vendor',
             'useminPrepare',
             'svgmin',
             'autoprefixer',
@@ -681,8 +739,10 @@ module.exports = function (grunt) {
   ]);
     //run task on file chage
     grunt.event.on('watch', function (action, filepath, target) {
-        grunt.task.run('server');
+        //grunt.task.run('server');
     });
+
+    /**/
 
 
 

@@ -30,7 +30,8 @@ Copyright:NisosTechnologies 2014*/
   */
   "dist": {
     "port": "9000", // default 9009
-    "dir": "./dist" // directory where you want your production builds to go
+    "dir": "./dist",
+      "hostname": "localhost"// directory where you want your production builds to go
   },
 
   /*
