@@ -147,9 +147,7 @@ module.exports = function (grunt) {
                 files: ['<%= settings.dev.dir %>/**/*.json', '!<%= settings.dev.dir %>/core/*.json'],
                 tasks: ['ngconstant:development',
             'merge-json',
-            'ngconstant:assets',
-            'ngconstant:url',
-                       'ngconstant:error']
+            'ngconstant:constant']
             }
         },
 
@@ -426,47 +424,17 @@ module.exports = function (grunt) {
                     $enviornment: require('./config/mock.json')
                 }
             },
-            assets: {
+            constant: {
                 options: {
                     space: '  ',
                     wrap: '\n\n {%= __ngModule %}',
-                    name: 'apprequire',
-                    dest: '<%= settings.dev.dir %>/core/assets.constant.js'
-                },
-                /* constants: {
-                     APP_REQUIRES: 'app/core/assets.json'
-                 },*/
-
-                constants: function () {
-                    return {
-                        APP_REQUIRES: grunt.file.readJSON('.tmp/assets.json')
-                    };
-                },
-
-            },
-            url: {
-                options: {
-                    space: '  ',
-                    wrap: '\n\n {%= __ngModule %}',
-                    name: 'url',
-                    dest: '<%= settings.dev.dir %>/core/url.constant.js'
+                    name: 'constants',
+                    dest: '<%= settings.dev.dir %>/core/constants.constant.js'
                 },
                 constants: function () {
                     return {
-                        APP_URL: grunt.file.readJSON('.tmp/url.json')
-                    };
-                },
-
-            },
-            error: {
-                options: {
-                    space: '  ',
-                    wrap: '\n\n {%= __ngModule %}',
-                    name: 'error',
-                    dest: '<%= settings.dev.dir %>/core/error.constant.js'
-                },
-                constants: function () {
-                    return {
+                        APP_REQUIRES: grunt.file.readJSON('.tmp/assets.json'),
+                        APP_URL: grunt.file.readJSON('.tmp/url.json'),
                         APP_ERROR: grunt.file.readJSON('.tmp/error.json')
                     };
                 },
@@ -656,9 +624,7 @@ module.exports = function (grunt) {
         }
         grunt.task.run('ngconstant:' + n,
             'merge-json',
-            'ngconstant:assets',
-            'ngconstant:url',
-            'ngconstant:error',
+            'ngconstant:constant',
             'connect:devel',
             // 'concurrent:dev'
             'watch:json');
@@ -730,9 +696,7 @@ module.exports = function (grunt) {
         grunt.task.run('clean:dist',
             'ngconstant:' + n,
             'merge-json',
-            'ngconstant:assets',
-            'ngconstant:url',
-            'ngconstant:error',
+            'ngconstant:constant',
             'copy:dist',
             'search:obscenities',
             //'clean:vendor',
