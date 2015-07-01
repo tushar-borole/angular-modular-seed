@@ -13,11 +13,10 @@
         .module('seed')
         .controller('LoginController', LoginController);
 
-    function LoginController(loginFactory) {
+    function LoginController(loginFactory,errorService) {
         var login = this;
         // unresolved
-        login.movies;
-        console.log("inn")
+      
 
         /**
          * @description Signin user
@@ -30,6 +29,7 @@
 
 
         }
+        errorService.error("successfull in app","success")
 
         login.randomData = [];
         for (var i = 0; i < 500; i++) {

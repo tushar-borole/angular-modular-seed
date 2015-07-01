@@ -27,16 +27,6 @@ Copyright:Seed Inc. 2014*/
             App.constant = $provide.constant;
             App.value = $provide.value;
 
-}]).config(['$translateProvider', function ($translateProvider) {
-
-        $translateProvider.useStaticFilesLoader({
-            prefix: 'conf/',
-            suffix: '.json'
-        });
-        $translateProvider.preferredLanguage('error');
-        $translateProvider.useLocalStorage();
-        $translateProvider.usePostCompiling(true);
-
 }]).config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeBar = true;
         cfpLoadingBarProvider.includeSpinner = false;

@@ -144,11 +144,12 @@ module.exports = function (grunt) {
         // Watch config
         watch: {
             json: {
-                files: ['<%= settings.dev.dir %>/**/*.json', '!<%= settings.dev.dir %>/conf/*.json'],
+                files: ['<%= settings.dev.dir %>/**/*.json', '!<%= settings.dev.dir %>/core/*.json'],
                 tasks: ['ngconstant:development',
             'merge-json',
             'ngconstant:assets',
-            'ngconstant:url']
+            'ngconstant:url',
+                       'ngconstant:error']
             }
         },
 
@@ -383,7 +384,7 @@ module.exports = function (grunt) {
             // Environment targets
             development: {
                 options: {
-                    dest: '<%= settings.dev.dir %>/conf/config.js',
+                    dest: '<%= settings.dev.dir %>/core/config.constant.js',
                     space: '  ',
                     wrap: '\n\n {%= __ngModule %}',
                     name: 'Config',
@@ -394,7 +395,7 @@ module.exports = function (grunt) {
             },
             staging: {
                 options: {
-                    dest: '<%= settings.dev.dir %>/conf/config.js',
+                    dest: '<%= settings.dev.dir %>/core/config.constant.js',
                     space: '  ',
                     wrap: '\n\n {%= __ngModule %}',
                     name: 'Config',
@@ -405,7 +406,7 @@ module.exports = function (grunt) {
             },
             production: {
                 options: {
-                    dest: '<%= settings.dev.dir %>/conf/config.js',
+                    dest: '<%= settings.dev.dir %>/core/config.constant.js',
                     space: '  ',
                     wrap: '\n\n {%= __ngModule %}',
                     name: 'Config',
@@ -416,7 +417,7 @@ module.exports = function (grunt) {
             },
             mock: {
                 options: {
-                    dest: '<%= settings.dev.dir %>/conf/config.js',
+                    dest: '<%= settings.dev.dir %>/core/config.constant.js',
                     space: '  ',
                     wrap: '\n\n {%= __ngModule %}',
                     name: 'Config',
@@ -430,10 +431,10 @@ module.exports = function (grunt) {
                     space: '  ',
                     wrap: '\n\n {%= __ngModule %}',
                     name: 'apprequire',
-                    dest: '<%= settings.dev.dir %>/conf/assets.js'
+                    dest: '<%= settings.dev.dir %>/core/assets.constant.js'
                 },
                 /* constants: {
-                     APP_REQUIRES: 'app/conf/assets.json'
+                     APP_REQUIRES: 'app/core/assets.json'
                  },*/
 
                 constants: function () {
@@ -448,11 +449,25 @@ module.exports = function (grunt) {
                     space: '  ',
                     wrap: '\n\n {%= __ngModule %}',
                     name: 'url',
-                    dest: '<%= settings.dev.dir %>/conf/url.js'
+                    dest: '<%= settings.dev.dir %>/core/url.constant.js'
                 },
                 constants: function () {
                     return {
                         APP_URL: grunt.file.readJSON('.tmp/url.json')
+                    };
+                },
+
+            },
+            error: {
+                options: {
+                    space: '  ',
+                    wrap: '\n\n {%= __ngModule %}',
+                    name: 'error',
+                    dest: '<%= settings.dev.dir %>/core/error.constant.js'
+                },
+                constants: function () {
+                    return {
+                        APP_ERROR: grunt.file.readJSON('.tmp/error.json')
                     };
                 },
 
@@ -538,8 +553,8 @@ module.exports = function (grunt) {
                     logFile: ".tmp/match.json",
                     logFormat: "json",
                     onMatch: function (match) {
-                        
-                        var matches=match.match.replace('"','')
+
+                        var matches = match.match.replace('"', '')
                         console.log(matches)
                         scriptArray.push(matches)
                             // called when a match is made. The parameter is an object of the
@@ -557,7 +572,7 @@ module.exports = function (grunt) {
                         };
                         grunt.config.set('copy.vendor', vendorScript);
                         console.log(grunt.config.get('copy.vendor'))
-                        //grunt.task.run("copy:vendor")
+                            //grunt.task.run("copy:vendor")
                             // called when all files have been parsed for the target. The
                             // matches parameter is an object of the format:
                             // `{ numMatches: N, matches: {} }`. The matches /property is
@@ -643,6 +658,7 @@ module.exports = function (grunt) {
             'merge-json',
             'ngconstant:assets',
             'ngconstant:url',
+            'ngconstant:error',
             'connect:devel',
             // 'concurrent:dev'
             'watch:json');
@@ -661,7 +677,7 @@ module.exports = function (grunt) {
 
 
         var re = /\b.*(.js|.css)\b/g;
-        var json = grunt.file.readJSON('app/conf/assets.json')
+        var json = grunt.file.readJSON('app/core/assets.json')
         var str = JSON.stringify(json);
         console.log(str)
         var m;
@@ -716,6 +732,7 @@ module.exports = function (grunt) {
             'merge-json',
             'ngconstant:assets',
             'ngconstant:url',
+            'ngconstant:error',
             'copy:dist',
             'search:obscenities',
             //'clean:vendor',

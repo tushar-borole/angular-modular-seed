@@ -24,15 +24,14 @@ app.service('authService', ['$http', '$q', '$timeout', 'Restangular', 'dataFacto
 
 
 /*it is common service to generate error message*/
-app.service('errorService', ['$http', '$translate', 'notify',
-    function ($http, $translate, notify) {
+app.service('errorService', ['$http', 'notify',
+    function ($http, notify) {
         return {
             error: function (text, classname, isTranslate) {
                 console.log(text);
-                var message = isTranslate == false ? text : $translate.instant(text);
                 notify.closeAll()
                 notify({
-                    message: message,
+                    message: text,
                     classes: classname
                 });
                 notify.config({

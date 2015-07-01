@@ -16,7 +16,6 @@ var App = angular.module('seed', [
     'ngAnimate',
     'ngStorage',
     'ngCookies',
-    'pascalprecht.translate',
     'ui.bootstrap',
     'ngMessages',
     'ui.router',
@@ -24,7 +23,7 @@ var App = angular.module('seed', [
     'cfp.loadingBar',
     'ngSanitize',
     'ngResource',
-    'ui.utils', 'permission', 'ngFabForm', 'restangular', 'Config','ui.scroll','apprequire','url'
+    'ui.utils', 'permission','toastr', 'ngFabForm', 'restangular', 'Config','ui.scroll','apprequire','url','error'
   ]);
 
 App.run(["$rootScope", "$state", "$stateParams", '$window', '$templateCache', 'Permission', 'APP_CONSTANTVALUE', function ($rootScope, $state, $stateParams, $window, $templateCache, Permission, APP_CONSTANTVALUE) {
