@@ -23,14 +23,6 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
                 abstract: true,
                 templateUrl: 'common/views/app.html'
             })
-            .state('app.login', {
-                url: '/login',
-                title: 'Single View',
-                templateUrl: 'modules/login/login.html',
-                controller: 'LoginController',
-                controllerAs: 'login',
-                resolve: helper.resolveFor('modernizr', 'icons', 'toaster','sweetalert','ui.select', 'login')
-            })
             .state('app.submenu', {
                 url: '/submenu',
                 title: 'Submenu',
@@ -55,4 +47,8 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         ;
 
 
-}])
+}]);
+ 
+ 
+ 
+ 

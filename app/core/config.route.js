@@ -1,8 +1,6 @@
 /*Author: Tushar Borole
 Discription:It contain page route information
 Copyright:Seed Inc. 2014*/
-(function () {
-    'use strict';
 
       angular
         .module('seed').config(['$ocLazyLoadProvider', 'APP_REQUIRES', function ($ocLazyLoadProvider, APP_REQUIRES) {
@@ -39,4 +37,3 @@ Copyright:Seed Inc. 2014*/
         });
 
 }]);
-}())

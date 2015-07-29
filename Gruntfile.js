@@ -12,6 +12,7 @@ module.exports = function (grunt) {
     require('autostrip-json-comments');
     var fs = require('fs');
     var scriptArray = [];
+    global.path = "./config/development.json";
 
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
@@ -144,10 +145,11 @@ module.exports = function (grunt) {
         // Watch config
         watch: {
             json: {
-                files: ['<%= settings.dev.dir %>/**/*.json', '!<%= settings.dev.dir %>/core/*.json'],
-                tasks: ['ngconstant:development',
-            'merge-json',
-            'ngconstant:constant']
+                files: ['<%= settings.dev.dir %>/**/*.json', '!<%= settings.dev.dir %>/core/*.json', '<%= settings.dev.dir %>/**/*.route.js'],
+                tasks: ['merge-json',
+            'ngconstant:constant',
+                        'clean:gruntgenerated',
+                       'concat:dist']
             }
         },
 
@@ -247,11 +249,11 @@ module.exports = function (grunt) {
           ]
         }]
             },
-            vendor: {
+            gruntgenerated: {
                 files: [{
                     dot: true,
                     src: [
-            '<%= settings.dist.dir %>/assets/vendor'
+            '<%= settings.dist.dir %>/common/grunt-generated'
           ]
         }]
             },
@@ -375,67 +377,32 @@ module.exports = function (grunt) {
             missing: {
                 nonull: true
             },
+            options: {
+                separator: ';',
+            },
+            dist: {
+                src: ['<%= settings.dev.dir %>/**/*.route.js'],
+                dest: '<%= settings.dev.dir %>/common/grunt-generated/route.routes.js',
+            },
         },
 
         ngconstant: {
             // Options for all targets
             // Environment targets
-            development: {
-                options: {
-                    dest: '<%= settings.dev.dir %>/core/config.constant.js',
-                    space: '  ',
-                    wrap: '\n\n {%= __ngModule %}',
-                    name: 'Config',
-                },
-                constants: {
-                    $enviornment: require('./config/development.json')
-                }
-            },
-            staging: {
-                options: {
-                    dest: '<%= settings.dev.dir %>/core/config.constant.js',
-                    space: '  ',
-                    wrap: '\n\n {%= __ngModule %}',
-                    name: 'Config',
-                },
-                constants: {
-                    $enviornment: require('./config/staging.json')
-                }
-            },
-            production: {
-                options: {
-                    dest: '<%= settings.dev.dir %>/core/config.constant.js',
-                    space: '  ',
-                    wrap: '\n\n {%= __ngModule %}',
-                    name: 'Config',
-                },
-                constants: {
-                    $enviornment: require('./config/production.json')
-                }
-            },
-            mock: {
-                options: {
-                    dest: '<%= settings.dev.dir %>/core/config.constant.js',
-                    space: '  ',
-                    wrap: '\n\n {%= __ngModule %}',
-                    name: 'Config',
-                },
-                constants: {
-                    $enviornment: require('./config/mock.json')
-                }
-            },
             constant: {
                 options: {
                     space: '  ',
                     wrap: '\n\n {%= __ngModule %}',
                     name: 'constants',
-                    dest: '<%= settings.dev.dir %>/core/constants.constant.js'
+                    dest: '<%= settings.dev.dir %>/common/grunt-generated/constants.constant.js'
                 },
                 constants: function () {
                     return {
                         APP_REQUIRES: grunt.file.readJSON('.tmp/assets.json'),
                         APP_URL: grunt.file.readJSON('.tmp/url.json'),
-                        APP_ERROR: grunt.file.readJSON('.tmp/error.json')
+                        APP_ERROR: grunt.file.readJSON('.tmp/error.json'),
+                        $enviornment: grunt.file.readJSON(global.path),
+                        $constant: grunt.file.readJSON('.tmp/constant.json')
                     };
                 },
 
@@ -499,7 +466,7 @@ module.exports = function (grunt) {
 
         'merge-json': {
             assets: {
-                src: ["<%= settings.dev.dir %>/**/*.script.json"],
+                src: ["<%= settings.dev.dir %>/**/*.assets.json"],
                 dest: ".tmp/assets.json"
             },
             url: {
@@ -509,6 +476,10 @@ module.exports = function (grunt) {
             error: {
                 src: ["<%= settings.dev.dir %>/**/*.error.json"],
                 dest: ".tmp/error.json"
+            },
+            constant: {
+                src: ["<%= settings.dev.dir %>/**/*.constant.json"],
+                dest: ".tmp/constant.json"
             }
         },
         search: {
@@ -622,10 +593,12 @@ module.exports = function (grunt) {
         if (n == null) {
             grunt.warn('Build type must be specified');
         }
-        grunt.task.run('ngconstant:' + n,
-            'merge-json',
+        global.path = "./config/" + n + ".json";
+        grunt.task.run('merge-json',
             'ngconstant:constant',
             'connect:devel',
+            'clean:gruntgenerated',
+            'concat:dist',
             // 'concurrent:dev'
             'watch:json');
     });
@@ -685,6 +658,8 @@ module.exports = function (grunt) {
             grunt.config('uglify.options.compress.drop_console', false);
         }
 
+        global.path = "./config/" + n + ".json";
+
 
 
         //grunt.config('copy.vendor.files[0].src', finalCopyFiles);
@@ -694,13 +669,13 @@ module.exports = function (grunt) {
 
 
         grunt.task.run('clean:dist',
-            'ngconstant:' + n,
             'merge-json',
             'ngconstant:constant',
             'copy:dist',
             'search:obscenities',
             //'clean:vendor',
             'copy:vendor',
+            'concat:dist',
             'useminPrepare',
             'svgmin',
             'autoprefixer',

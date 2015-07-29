@@ -23,15 +23,15 @@ var App = angular.module('seed', [
     'cfp.loadingBar',
     'ngSanitize',
     'ngResource',
-    'ui.utils', 'permission','toastr', 'ngFabForm', 'restangular', 'Config','ui.scroll','constants'
+    'ui.utils', 'permission','toastr', 'ngFabForm', 'restangular','ui.scroll','constants'
   ]);
 
-App.run(["$rootScope", "$state", "$stateParams", '$window', '$templateCache', 'Permission', 'APP_CONSTANTVALUE', function ($rootScope, $state, $stateParams, $window, $templateCache, Permission, APP_CONSTANTVALUE) {
+App.run(["$rootScope", "$state", "$stateParams", '$window', '$templateCache', 'Permission', '$constant', function ($rootScope, $state, $stateParams, $window, $templateCache, Permission, $constant) {
     // Set reference to access them from any scope
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     $rootScope.$storage = $window.localStorage;
-    $rootScope.$constant = APP_CONSTANTVALUE;
+    $rootScope.$constant = $constant;
 
     // Uncomment this to disable template cache
     /*$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
