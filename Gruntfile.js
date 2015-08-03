@@ -399,10 +399,7 @@ module.exports = function (grunt) {
                 constants: function () {
                     return {
                         APP_REQUIRES: grunt.file.readJSON('.tmp/assets.json'),
-                        APP_URL: grunt.file.readJSON('.tmp/url.json'),
-                        APP_ERROR: grunt.file.readJSON('.tmp/error.json'),
-                        $enviornment: grunt.file.readJSON(global.path),
-                        $constant: grunt.file.readJSON('.tmp/constant.json')
+                        $enviornment: grunt.file.readJSON(global.path)
                     };
                 },
 
@@ -468,18 +465,6 @@ module.exports = function (grunt) {
             assets: {
                 src: ["<%= settings.dev.dir %>/**/*.assets.json"],
                 dest: ".tmp/assets.json"
-            },
-            url: {
-                src: ["<%= settings.dev.dir %>/**/*.url.json"],
-                dest: ".tmp/url.json"
-            },
-            error: {
-                src: ["<%= settings.dev.dir %>/**/*.error.json"],
-                dest: ".tmp/error.json"
-            },
-            constant: {
-                src: ["<%= settings.dev.dir %>/**/*.constant.json"],
-                dest: ".tmp/constant.json"
             }
         },
         search: {

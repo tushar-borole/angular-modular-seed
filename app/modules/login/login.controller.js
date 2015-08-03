@@ -13,7 +13,7 @@
         .module('seed')
         .controller('LoginController', LoginController);
 
-    function LoginController(loginFactory,errorService) {
+    function LoginController(loginFactory,errorService,loginError) {
         var login = this;
         // unresolved
       
@@ -29,7 +29,7 @@
 
 
         }
-        errorService.error("successfull in app","success")
+        errorService.error(loginError.login.error.loginerror,"success")
 
         login.randomData = [];
         for (var i = 0; i < 500; i++) {

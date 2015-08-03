@@ -1,8 +1,10 @@
 {
     "app": [
         {
+            "serie": false,
             "name": "login",
-            "files": ["modules/login/login.controller.js", "modules/login/login.factory.js", "common/directive/sweetalert.directive.js"]
+            "files": ["modules/login/login.controller.js", "modules/login/login.factory.js", "common/directive/sweetalert.directive.js","modules/login/login.constant.js","modules/login/login.error.js","modules/login/login.url.js"]
          }
+        
     ]
 }

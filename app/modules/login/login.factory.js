@@ -13,10 +13,10 @@
         .module('seed')
         .factory('loginFactory', loginFactory);
 
-    loginFactory.$inject = ['Restangular','APP_URL','$enviornment'];
+    loginFactory.$inject = ['Restangular','loginUrl','$enviornment'];
 
     /* @ngInject */
-    function loginFactory(Restangular,APP_URL,$enviornment) {
+    function loginFactory(Restangular,loginUrl,$enviornment) {
         var exports = {
             login: login
         };
@@ -27,7 +27,7 @@
         ////////////////
 
         function login() {
-            var url = APP_URL[$enviornment.urlname].login;
+            var url = loginUrl[$enviornment.urlname].login;
             var postType = restangularParams('post', $enviornment.urlname);
             return Restangular.withConfig(function (RestangularConfigurer) {
                 RestangularConfigurer.setBaseUrl($enviornment.backendurl);
