@@ -23,7 +23,7 @@ var App = angular.module('seed', [
     'cfp.loadingBar',
     'ngSanitize',
     'ngResource',
-    'ui.utils', 'permission','toastr', 'ngFabForm', 'restangular','ui.scroll','constants'
+    'ui.utils', 'permission', 'toastr', 'ngFabForm', 'restangular', 'ui.scroll', 'constants'
   ]);
 
 App.run(["$rootScope", "$state", "$stateParams", '$window', '$templateCache', 'Permission', function ($rootScope, $state, $stateParams, $window, $templateCache, Permission) {
@@ -73,5 +73,9 @@ App.run(["$rootScope", "$state", "$stateParams", '$window', '$templateCache', 'P
         job: 'ng-developer',
         picture: 'app/img/user/02.jpg'
     };
+
+    $rootScope.$on('ocLazyLoad.moduleLoaded', function (e, module) {
+        console.log('module loaded', e);
+    });
 
 }]);

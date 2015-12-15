@@ -2,7 +2,7 @@ Angular modular Seed
 ===================
 
 
-This is and seed with modular approach, which is created, thing the performance of application and easy development for the developer
+This is and seed with modular approach, which is created, thing the performance of application and easy development for the developer. Every functionality is deviced into seperate folders acting as thei own independent components. Seed was creted considering the speed of developers working on single project but different modules in project.
 
 
 [http://nisostech.com/angularjs-seed-project-a-modular-approach/](http://nisostech.com/angularjs-seed-project-a-modular-approach/)
@@ -53,42 +53,51 @@ Configuration are taken from development.json
 
 #### <i class="icon-pencil"></i> Loading Assets files
  
- In this seed we load script and js from **assets.json** 
-
+ This seed has example of login functionality,
+ Folder login contains the following files carrying out their indepedent role in the application
  
+ ####  File Structure
+ 
+ ## login.route.js
+ 
+ Contains the routes required for login modules, this files get merge by grunt task automatically to create the common routes
+```javascript
+angular
+     .module('seed').config(['$stateProvider', 'RouteHelpersProvider',
+function ($stateProvider, helper) {
+             'use strict';
 
-    {
-    "scripts": [
+             $stateProvider
+                 .state('app.login', {
+                     url: '/login',
+                     title: 'Single View',
+                     templateUrl: 'modules/login/login.html',
+                     controller: 'LoginController',
+                     controllerAs: 'login',
+                     resolve: helper.resolveFor( 'login')
+                 })
+
+
+
+}]);
+```
+## login.assets.json
+
+All dependencies required for login modules is mentioned in login.assests.son
+
+```javascript
+{
+    "app": [
         {
-            "name": "icons",
-            "files": ["assets/vendor/modernizr/modernizr.js"]
-        }
-    ],
-    "modules": [
-        {
-            "name": "toaster",
-            "files": ["assets/vendor/angularjs-toaster/toaster.js", "assets/vendor/angularjs-toaster/toaster.css"]
-         }
-    ],
-    "angularscript": [
-        {
+            "serie": false,
             "name": "login",
-            "files": ["modules/login/login.controller.js", "modules/login/login.factory.js", "assets/script/directive/sweetalert.directive.js"]
+            "files": ["modules/login/login.controller.js", "modules/login/login.factory.js", "common/directive/sweetalert.directive.js","modules/login/login.constant.js","modules/login/login.error.js","modules/login/login.url.js"]
          }
+        
     ]
+}
+```
 
-If You want to load specific module foe specific route
-
-You route.js will become
-
-    .state('app.login', {
-                url: '/login',
-                title: 'Single View',
-                templateUrl: 'modules/login/login.html',
-                controller: 'LoginController',
-                controllerAs: 'login',
-                resolve: helper.resolveFor(toaster, 'login')
-            })
 
 
 #### <i class="icon-trash"></i> Generating dist copy
